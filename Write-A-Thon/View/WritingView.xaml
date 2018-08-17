@@ -12,7 +12,7 @@
         <RichEditBox PlaceholderText="Start writing and never look back!"
                      BorderThickness="0"
                      Padding="20"
-                     ScrollViewer.VerticalScrollMode="Auto"
-                     />
+                     ScrollViewer.VerticalScrollMode="Auto"/>
+
     </Grid>
 </Page>
