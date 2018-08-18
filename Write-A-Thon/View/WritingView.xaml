@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:contract6Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,6)"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -23,22 +24,45 @@
             <StackPanel Orientation="Horizontal" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                 <Button Width="48"
                         Height="48"
-                        Name="BoldButton">
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19B;" />
+                        Name="BoldButton"
+                        ToolTipService.ToolTip="Bold (CTRL+B)"
+                        Style="{ThemeResource ButtonRevealStyle}">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19B;" />
+                    </Button.Content>
+
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="B" Modifiers="Control"/> 
+                    </Button.KeyboardAccelerators>
                 </Button>
 
                 <Button
                         Width="48"
                         Height="48"
                     Style="{ThemeResource ButtonRevealStyle}"
-                    Name="ItalicButton">
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE199;" />
+                    Name="ItalicButton"
+                    ToolTipService.ToolTip="Italic (CTRL+I)"
+                    contract6Present:KeyboardAcceleratorPlacementMode="Auto">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE199;" />
+                    </Button.Content>
+                    
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="I" Modifiers="Control" />
+                    </Button.KeyboardAccelerators>
                 </Button>
                 <Button Width="48"
                         Height="48"
                          Style="{ThemeResource ButtonRevealStyle}"
-                        Name="UnderlineButton">
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19A;" />
+                        Name="UnderlineButton"
+                        ToolTipService.ToolTip="Underline (CTRL+U)">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19A;" />
+                    </Button.Content>
+
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="U" Modifiers="Control"/>
+                    </Button.KeyboardAccelerators>
                 </Button>
             </StackPanel>
         </controls:DropShadowPanel>
