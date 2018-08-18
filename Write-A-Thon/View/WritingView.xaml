@@ -21,20 +21,25 @@
                                   Color="Gray"
                                   HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                <Button Width="48"
+                        Height="48"
+                        Name="BoldButton">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19B;" />
+                </Button>
+
                 <Button
                         Width="48"
                         Height="48"
-                        Content="Hi"
-                    Style="{ThemeResource ButtonRevealStyle}"/>
-                <Button 
-                        Width="48"
-                        Height="48"
-                        Content="Hi"
-                     Style="{ThemeResource ButtonRevealStyle}"/>
+                    Style="{ThemeResource ButtonRevealStyle}"
+                    Name="ItalicButton">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE199;" />
+                </Button>
                 <Button Width="48"
                         Height="48"
-                        Content="Hi"
-                         Style="{ThemeResource ButtonRevealStyle}"/>
+                         Style="{ThemeResource ButtonRevealStyle}"
+                        Name="UnderlineButton">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19A;" />
+                </Button>
             </StackPanel>
         </controls:DropShadowPanel>
         <RichEditBox PlaceholderText="Start writing and never look back!"
