@@ -5,14 +5,43 @@
     xmlns:local="using:Write_A_Thon.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <controls:DropShadowPanel HorizontalContentAlignment="Stretch"
+                                  VerticalContentAlignment="Stretch"
+                                  ShadowOpacity="0.3"
+                                  Margin="0,20"
+                                  Color="Gray"
+                                  HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                <Button
+                        Width="48"
+                        Height="48"
+                        Content="Hi"
+                    Style="{ThemeResource ButtonRevealStyle}"/>
+                <Button 
+                        Width="48"
+                        Height="48"
+                        Content="Hi"
+                     Style="{ThemeResource ButtonRevealStyle}"/>
+                <Button Width="48"
+                        Height="48"
+                        Content="Hi"
+                         Style="{ThemeResource ButtonRevealStyle}"/>
+            </StackPanel>
+        </controls:DropShadowPanel>
         <RichEditBox PlaceholderText="Start writing and never look back!"
                      BorderThickness="0"
                      Padding="20"
-                     ScrollViewer.VerticalScrollMode="Auto"/>
+                     ScrollViewer.VerticalScrollMode="Auto"
+                     Grid.Row="1"/>
 
     </Grid>
 </Page>
