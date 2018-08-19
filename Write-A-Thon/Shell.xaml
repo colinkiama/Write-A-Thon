@@ -89,6 +89,7 @@
             <Frame Name="SettingsFrame" 
                Width="300"
                HorizontalAlignment="Right"
+               Grid.Column="1"
                Loaded="SettingsFrame_Loaded"/>
         </Grid>
     </Grid>

@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="Write_A_Thon.View.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Write_A_Thon.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
+          Padding="20,8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Settings"
+                       Name="TitleTextBlock"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       FontWeight="SemiBold"/>
+        <RelativePanel Grid.Row="1"
+                       Margin="0,32,0,0">
+            
+            <TextBlock Text="Daily Target Reminder:"
+                       FontWeight="SemiBold"
+                       Name="DailyTargetTitle"
+                       FontSize="16"/>
+            <ComboBox RelativePanel.Below="DailyTargetTitle" 
+                      SelectedIndex="0"
+                      Width="150"
+                      Header="Every:"
+                      Margin="0,8,0,0"
+                      Name="TargetReminderComboBox">
+                <ComboBoxItem Content="15 Minutes"/>
+                <ComboBoxItem Content="30 Minutes"/>
+                <ComboBoxItem Content="1 Hour"/>
+                <ComboBoxItem Content="2 Hours"/>
+                <ComboBoxItem Content="4 Hours"/>
+            </ComboBox>
+            <TextBlock Text="Target:" Margin="0,24,0,0"
+                       RelativePanel.Below="TargetReminderComboBox"
+                       FontWeight="SemiBold"
+                       FontSize="16"
+                       Name="TargetHeader"/>
+            <TextBox RelativePanel.Below="TargetHeader"
+                     Text="1500"
+                     Width="150"
+                     Name="TargetTextBox"
+                     Margin="0,8,0,0"/>
+
+            <TextBlock Text="Due Date:" 
+                       Margin="0,24,0,0"
+                       RelativePanel.Below="TargetTextBox"
+                       FontWeight="SemiBold"
+                       Name="DueDateHeader"/>
+            <CalendarDatePicker RelativePanel.Below="DueDateHeader"
+                                Margin="0,8,0,0"
+                                PlaceholderText="Select a date"
+                                Width="150"
+                                Name="DueDatePicker"/>
+            <Button Name="RedoGoalSettingButton"
+                    RelativePanel.Below="DueDatePicker"
+                    Content="Redo Goal Setting"
+                    Margin="0,24,0,0"/>
+        </RelativePanel>
+    </Grid>
+</Page>

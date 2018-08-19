@@ -32,6 +32,7 @@ namespace Write_A_Thon
             this.InitializeComponent();
             mainFrame.Navigate(typeof(WritingView));
             InfoBarFrame.Navigate(typeof(InfoBarView));
+            SettingsFrame.Navigate(typeof(SettingsView));
         }
 
 
