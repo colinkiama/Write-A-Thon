@@ -12,12 +12,13 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
             <RowDefinition/>
-            <RowDefinition Height="24"/>
         </Grid.RowDefinitions>
-        <Frame Name="mainFrame" Margin="0,4,0,0"/>
-        <Frame Name="InfoBarFrame" Grid.Row="1"
-               />
+        <TextBlock Text="Write-A-Thon"
+                   FontSize="12"
+                   Padding="12,9"
+                   Canvas.ZIndex="20"/>
         <ToggleButton Name="MenuButton"
                 VerticalAlignment="Top"
                 Padding="15"
@@ -26,7 +27,9 @@
                 Click="MenuButton_Click"
                 Canvas.ZIndex="20"
                       IsThreeState="False"
-                      Style="{ThemeResource BetterToggleButtonRevealStyle}">
+                      Style="{ThemeResource BetterToggleButtonRevealStyle}"
+                      Grid.RowSpan="2"
+                      Margin="0,32,0,0">
             <ToggleButton.Content>
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" />
             </ToggleButton.Content>
@@ -35,7 +38,9 @@
               HorizontalAlignment="Left"
               Background="{ThemeResource SystemControlChromeHighAcrylicWindowMediumBrush}"
               Name="MenuGrid"
-              Loaded="MenuGrid_Loaded">
+              Loaded="MenuGrid_Loaded"
+              Grid.RowSpan="2"
+              Canvas.ZIndex="10">
             <ListView Margin="0,80,0,0" IsItemClickEnabled="True"
                       SelectionMode="None">
                 <ListViewItem Content="New File"/>
@@ -50,7 +55,23 @@
                 <ListViewItem Content="Send Feedback"/>
             </ListView>
         </Grid>
-        <ToggleButton Name="SettingsButton"
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="24"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Name="mainFrame" Margin="0,4,0,0"
+               Grid.ColumnSpan="2"/>
+            <Frame Name="InfoBarFrame" Grid.Row="1"
+              Grid.ColumnSpan="2" />
+            
+            <ToggleButton Name="SettingsButton"
                 Padding="15"
                 Background="Transparent"
                 BorderThickness="0"
@@ -59,14 +80,16 @@
                 Click="SettingsButton_Click"
                 Canvas.ZIndex="20"
                       IsThreeState="False"
-                      Style="{ThemeResource BetterToggleButtonRevealStyle}">
-            <ToggleButton.Content>
-                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" />
-            </ToggleButton.Content>
-        </ToggleButton>
-        <Frame Name="SettingsFrame" 
+                      Style="{ThemeResource BetterToggleButtonRevealStyle}"
+                          Grid.ColumnSpan="2">
+                <ToggleButton.Content>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" />
+                </ToggleButton.Content>
+            </ToggleButton>
+            <Frame Name="SettingsFrame" 
                Width="300"
                HorizontalAlignment="Right"
                Loaded="SettingsFrame_Loaded"/>
+        </Grid>
     </Grid>
 </Page>
