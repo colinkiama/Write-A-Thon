@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="Write_A_Thon.View.InfoBarView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Write_A_Thon.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource SystemControlAccentDark2AcrylicWindowAccentDark2MediumHighBrush}">
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin"
+                        Value="0,0,12,0"/>
+                <Setter Property="Foreground"
+                        Value="White"/>
+            </Style>
+        </Grid.Resources>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal"
+                    Padding="12,0">
+            <TextBlock Name="WordCountTextBlock" Text="Words: 299"/>
+            <TextBlock Name="TargetTextBlock" Text="Target: 1500"/>
+            <TextBlock Name="ProgressTextBlock" Text="Progress: 19%"/>
+        </StackPanel>
+    </Grid>
+</Page>

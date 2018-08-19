@@ -100,7 +100,11 @@
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\InfoBarViewModel.cs" />
     <Compile Include="ViewModel\WritingViewModel.cs" />
+    <Compile Include="View\InfoBarView.xaml.cs">
+      <DependentUpon>InfoBarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\WritingView.xaml.cs">
       <DependentUpon>WritingView.xaml</DependentUpon>
     </Compile>
@@ -151,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InfoBarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -72,8 +72,7 @@
                      Padding="20"
                      ScrollViewer.VerticalScrollMode="Auto"
                      Grid.Row="1"
-                     Style="{ThemeResource BetterRichEditBoxStyle}"
-                     />
+                     Style="{ThemeResource BetterRichEditBoxStyle}"/>
 
     </Grid>
 </Page>

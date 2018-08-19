@@ -9,6 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
         <Frame Name="mainFrame"/>
+        <Frame Name="InfoBarFrame" Grid.Row="1"/>
     </Grid>
 </Page>

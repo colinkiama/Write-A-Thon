@@ -12,22 +12,19 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Write_A_Thon.View;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Write_A_Thon
+namespace Write_A_Thon.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Shell : Page
+    public sealed partial class InfoBarView : Page
     {
-        public Shell()
+        public InfoBarView()
         {
-            this.InitializeComponent(); 
-            mainFrame.Navigate(typeof(WritingView));
-            InfoBarFrame.Navigate(typeof(InfoBarView));
+            this.InitializeComponent();
         }
     }
 }
