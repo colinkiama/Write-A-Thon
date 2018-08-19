@@ -9,7 +9,9 @@
     xmlns:contract6Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,6)"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/Styles.xaml"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -19,7 +21,6 @@
                                   VerticalContentAlignment="Stretch"
                                   ShadowOpacity="0.3"
                                   Margin="0,20"
-                                  Color="Gray"
                                   HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                 <Button Width="48"
@@ -70,7 +71,9 @@
                      BorderThickness="0"
                      Padding="20"
                      ScrollViewer.VerticalScrollMode="Auto"
-                     Grid.Row="1"/>
+                     Grid.Row="1"
+                     Style="{ThemeResource BetterRichEditBoxStyle}"
+                     />
 
     </Grid>
 </Page>
