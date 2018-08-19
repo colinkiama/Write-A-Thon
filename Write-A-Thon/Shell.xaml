@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/Styles.xaml"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -16,29 +18,55 @@
         <Frame Name="mainFrame" Margin="0,4,0,0"/>
         <Frame Name="InfoBarFrame" Grid.Row="1"
                />
-        <Button Name="MenuButton"
+        <ToggleButton Name="MenuButton"
                 VerticalAlignment="Top"
                 Padding="15"
                 Background="Transparent"
-                Style="{ThemeResource ButtonRevealStyle}"
                 BorderThickness="0"
-                Click="MenuButton_Click">
-            <Button.Content>
+                Click="MenuButton_Click"
+                Canvas.ZIndex="20"
+                      IsThreeState="False"
+                      Style="{ThemeResource BetterToggleButtonRevealStyle}">
+            <ToggleButton.Content>
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" />
-            </Button.Content>
-        </Button>
-        <Button Name="SettingsButton"
+            </ToggleButton.Content>
+        </ToggleButton>
+        <Grid Width="300"
+              HorizontalAlignment="Left"
+              Background="{ThemeResource SystemControlChromeHighAcrylicWindowMediumBrush}"
+              Name="MenuGrid"
+              Loaded="MenuGrid_Loaded">
+            <ListView Margin="0,80,0,0" IsItemClickEnabled="True"
+                      SelectionMode="None">
+                <ListViewItem Content="New File"/>
+                <ListViewItem Content="Save"/>
+                <ListViewItem Content="Save As..."/>
+                <ListViewItem Content="Load File"/>
+
+            </ListView>
+            <ListView VerticalAlignment="Bottom" IsItemClickEnabled="True"
+                      SelectionMode="None">
+                <ListViewItem Content="Rate/Review App"/>
+                <ListViewItem Content="Send Feedback"/>
+            </ListView>
+        </Grid>
+        <ToggleButton Name="SettingsButton"
                 Padding="15"
                 Background="Transparent"
-                Style="{ThemeResource ButtonRevealStyle}"
                 BorderThickness="0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                Click="SettingsButton_Click">
-            <Button.Content>
+                Click="SettingsButton_Click"
+                Canvas.ZIndex="20"
+                      IsThreeState="False"
+                      Style="{ThemeResource BetterToggleButtonRevealStyle}">
+            <ToggleButton.Content>
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" />
-            </Button.Content>
-            
-        </Button>
+            </ToggleButton.Content>
+        </ToggleButton>
+        <Frame Name="SettingsFrame" 
+               Width="300"
+               HorizontalAlignment="Right"
+               Loaded="SettingsFrame_Loaded"/>
     </Grid>
 </Page>
