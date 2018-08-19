@@ -20,8 +20,8 @@
         <controls:DropShadowPanel HorizontalContentAlignment="Stretch"
                                   VerticalContentAlignment="Stretch"
                                   ShadowOpacity="0.3"
-                                  Margin="0,20"
-                                  HorizontalAlignment="Center">
+                                  HorizontalAlignment="Center"
+                                  Margin="0,0,0,20">
             <StackPanel Orientation="Horizontal" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                 <Button Width="48"
                         Height="48"

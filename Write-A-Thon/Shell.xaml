@@ -11,9 +11,34 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="32"/>
+            <RowDefinition Height="24"/>
         </Grid.RowDefinitions>
-        <Frame Name="mainFrame"/>
-        <Frame Name="InfoBarFrame" Grid.Row="1"/>
+        <Frame Name="mainFrame" Margin="0,4,0,0"/>
+        <Frame Name="InfoBarFrame" Grid.Row="1"
+               />
+        <Button Name="MenuButton"
+                VerticalAlignment="Top"
+                Padding="15"
+                Background="Transparent"
+                Style="{ThemeResource ButtonRevealStyle}"
+                BorderThickness="0"
+                Click="MenuButton_Click">
+            <Button.Content>
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" />
+            </Button.Content>
+        </Button>
+        <Button Name="SettingsButton"
+                Padding="15"
+                Background="Transparent"
+                Style="{ThemeResource ButtonRevealStyle}"
+                BorderThickness="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="SettingsButton_Click">
+            <Button.Content>
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" />
+            </Button.Content>
+            
+        </Button>
     </Grid>
 </Page>

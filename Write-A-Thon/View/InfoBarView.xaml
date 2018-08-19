@@ -14,13 +14,15 @@
                         Value="0,0,12,0"/>
                 <Setter Property="Foreground"
                         Value="White"/>
+                <Setter Property="FontSize"
+                        Value="14"/>
             </Style>
         </Grid.Resources>
         <StackPanel VerticalAlignment="Center" Orientation="Horizontal"
                     Padding="12,0">
-            <TextBlock Name="WordCountTextBlock" Text="Words: 299"/>
+            <TextBlock Name="WordCountTextBlock" Text="Words: 0"/>
             <TextBlock Name="TargetTextBlock" Text="Target: 1500"/>
-            <TextBlock Name="ProgressTextBlock" Text="Progress: 19%"/>
+            <TextBlock Name="ProgressTextBlock" Text="Progress: 0%"/>
         </StackPanel>
     </Grid>
 </Page>

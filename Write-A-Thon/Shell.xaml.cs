@@ -29,5 +29,15 @@ namespace Write_A_Thon
             mainFrame.Navigate(typeof(WritingView));
             InfoBarFrame.Navigate(typeof(InfoBarView));
         }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
