@@ -62,7 +62,7 @@ namespace Write_A_Thon.View
         {
             var reb = sender as RichEditBox;
             string value = string.Empty;
-            reb.Document.GetText(Windows.UI.Text.TextGetOptions.AdjustCrlf, out value);
+            reb.Document.GetText(Windows.UI.Text.TextGetOptions.FormatRtf, out value);
             if (string.IsNullOrEmpty(value))
             {
                 return;
