@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Write_A_Thon.ViewModel
 {
-    public class InfoBarViewModel
+    public class InfoBarViewModel:NotifyingViewModel
     {
 
     }

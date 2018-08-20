@@ -8,9 +8,15 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:contract6Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,6)"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:vm="using:Write_A_Thon.ViewModel">
     <Page.Resources>
-        <ResourceDictionary Source="ms-appx:///Styles/Styles.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <vm:WritingViewModel x:Name="ViewModel"/>
+        </ResourceDictionary>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -33,7 +39,7 @@
                     </Button.Content>
 
                     <Button.KeyboardAccelerators>
-                        <KeyboardAccelerator Key="B" Modifiers="Control"/> 
+                        <KeyboardAccelerator Key="B" Modifiers="Control"/>
                     </Button.KeyboardAccelerators>
                 </Button>
 
@@ -47,7 +53,7 @@
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE199;" />
                     </Button.Content>
-                    
+
                     <Button.KeyboardAccelerators>
                         <KeyboardAccelerator Key="I" Modifiers="Control" />
                     </Button.KeyboardAccelerators>
@@ -72,7 +78,10 @@
                      Padding="20"
                      ScrollViewer.VerticalScrollMode="Auto"
                      Grid.Row="1"
-                     Style="{ThemeResource BetterRichEditBoxStyle}"/>
+                     Style="{ThemeResource BetterRichEditBoxStyle}"
+                     Name="WritingBox"
+                     local:WritingView.RichText="Hi"
+                     TextChanged="WritingBox_TextChanged"/>
 
     </Grid>
 </Page>
