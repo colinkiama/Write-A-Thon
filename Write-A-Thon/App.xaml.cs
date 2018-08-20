@@ -94,6 +94,7 @@ namespace Write_A_Thon
             var appView = ApplicationView.GetForCurrentView();
             var titleBar = appView.TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
 
         private void ExtendTitleBar()

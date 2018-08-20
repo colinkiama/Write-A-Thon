@@ -34,13 +34,15 @@
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" />
             </ToggleButton.Content>
         </ToggleButton>
+        
         <Grid Width="300"
               HorizontalAlignment="Left"
-              Background="{ThemeResource SystemControlChromeHighAcrylicWindowMediumBrush}"
+              Background="{ThemeResource SystemControlChromeMediumAcrylicWindowMediumBrush}"
               Name="MenuGrid"
               Loaded="MenuGrid_Loaded"
               Grid.RowSpan="2"
-              Canvas.ZIndex="10">
+              Canvas.ZIndex="10"
+              Margin="0,0,0,24">
             <ListView Margin="0,80,0,0" IsItemClickEnabled="True"
                       SelectionMode="None">
                 <ListViewItem Content="New File"/>
@@ -56,6 +58,30 @@
             </ListView>
         </Grid>
 
+        <ToggleButton Name="SettingsButton"
+                Padding="15"
+                Background="Transparent"
+                BorderThickness="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="SettingsButton_Click"
+                Canvas.ZIndex="20"
+                      Grid.RowSpan="2"
+                      IsThreeState="False"
+                      Style="{ThemeResource BetterToggleButtonRevealStyle}"
+                      Margin="0,32,0,0">
+            <ToggleButton.Content>
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" />
+            </ToggleButton.Content>
+        </ToggleButton>
+        <Frame Name="SettingsFrame" 
+               Width="300"
+               HorizontalAlignment="Right"
+                   Grid.RowSpan="2"
+               Loaded="SettingsFrame_Loaded"
+               Canvas.ZIndex="10"
+               Margin="0,0,0,24"/>
+
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -70,8 +96,8 @@
                Grid.ColumnSpan="2"/>
             <Frame Name="InfoBarFrame" Grid.Row="1"
               Grid.ColumnSpan="2" />
-            
-            <ToggleButton Name="SettingsButton"
+
+            <!--<ToggleButton Name="SettingsButton"
                 Padding="15"
                 Background="Transparent"
                 BorderThickness="0"
@@ -89,8 +115,10 @@
             <Frame Name="SettingsFrame" 
                Width="300"
                HorizontalAlignment="Right"
-               Grid.Column="1"
-               Loaded="SettingsFrame_Loaded"/>
+               Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Grid.RowSpan="1"
+               Loaded="SettingsFrame_Loaded"/>-->
         </Grid>
     </Grid>
 </Page>

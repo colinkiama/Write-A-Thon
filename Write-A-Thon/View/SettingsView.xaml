@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
+    <Grid Background="{ThemeResource SystemControlChromeMediumAcrylicWindowMediumBrush}"
           Padding="20,8">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,7 +18,8 @@
         <TextBlock Text="Settings"
                        Name="TitleTextBlock"
                        Style="{ThemeResource TitleTextBlockStyle}"
-                       FontWeight="SemiBold"/>
+                       FontWeight="SemiBold"
+                   Margin="0,32,0,0"/>
         <RelativePanel Grid.Row="1"
                        Margin="0,32,0,0">
             
