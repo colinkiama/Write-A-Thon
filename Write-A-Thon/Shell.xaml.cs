@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using Write_A_Thon.View;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using System.Threading.Tasks;
+using Write_A_Thon.Services;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Write_A_Thon
@@ -27,6 +28,7 @@ namespace Write_A_Thon
 
     public sealed partial class Shell : Page
     {
+        public static FileIOService fileIOService = new FileIOService();
         public Shell()
         {
             this.InitializeComponent();

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Write_A_Thon.ViewModel
 {
-    class SettingsViewModel:NotifyingViewModel
+    public class SettingsViewModel:NotifyingViewModel
     {
+
     }
 }
