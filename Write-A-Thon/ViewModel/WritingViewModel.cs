@@ -11,34 +11,7 @@ namespace Write_A_Thon.ViewModel
 {
     public class WritingViewModel : NotifyingViewModel
     {
-        public StorageFile loadedFile;
-        private string _editorText;
-
-        public string EditorText
-        {
-            get { return _editorText; }
-            set
-            {
-                _editorText = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public WritingViewModel()
-        {
-            
-
-            if (FileLaunchService.wasFileLaunched)
-            {
-                
-                (EditorText, loadedFile) = App.fileLaunchService.GetLaunchFileData();
-
-            }
-            Debug.WriteLine(EditorText);
-            Debug.WriteLine(loadedFile);
-        }
-
-
+        
 
 
     }
