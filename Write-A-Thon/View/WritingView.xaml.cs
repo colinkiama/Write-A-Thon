@@ -36,6 +36,8 @@ namespace Write_A_Thon.View
         public WritingView()
         {
             this.InitializeComponent();
+            App.fileIOService.SaveRequested += FileIOService_SaveRequested;
+            App.fileIOService.SaveAsRequested += FileIOService_SaveAsRequested;
             App.fileIOService.LoadRequested += FileIOService_LoadRequested;
             string EditorText = "";
             if (FileLaunchService.wasFileLaunched)
@@ -50,18 +52,52 @@ namespace Write_A_Thon.View
             SetRichEditBoxContent(EditorText);
         }
 
+        private void FileIOService_SaveRequested(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FileIOService_SaveAsRequested(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private async void FileIOService_LoadRequested(object sender, EventArgs e)
         {
-            if (CheckIfSavedContentHasChanged() == true)
+            string richEditBoxContent = GetRichEditBoxContent();
+            if (loadedFile != null)
+            {
+                if (CheckIfSavedContentHasChanged() == true)
+                {
+                    var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        await fileIOHelper.SaveFileAsync(richEditBoxContent, loadedFile, true);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                
+            }
+
+            else
             {
                 var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
                 if (result == ContentDialogResult.Primary)
                 {
-                    await fileIOHelper.SaveFileAsync(GetRichEditBoxContent(),true);
+                    await fileIOHelper.SaveFileAsync(richEditBoxContent, true);
+                }
+                else
+                {
+                    return;
                 }
             }
+           
+
             StorageFile fileToLoad = await fileIOHelper.LoadFileAsync();
-            
+
             if (fileToLoad != null)
             {
                 string fileContent = await fileIOHelper.GetContentFromFileAsync(fileToLoad);

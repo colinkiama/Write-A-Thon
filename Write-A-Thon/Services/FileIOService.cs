@@ -11,7 +11,20 @@ namespace Write_A_Thon.Services
     public class FileIOService
     {
         public event EventHandler LoadRequested;
+        public event EventHandler SaveRequested;
+        public event EventHandler SaveAsRequested;
 
+        public void RequestToSaveFile(bool forceSaveDialog)
+        {
+            if (forceSaveDialog)
+            {
+                SaveAsRequested?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                SaveRequested?.Invoke(this, EventArgs.Empty);
+            }
+        }
         public void RequestToLoadFile() => LoadRequested?.Invoke(this, EventArgs.Empty);
         
     }
