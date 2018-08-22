@@ -13,7 +13,7 @@ namespace Write_A_Thon.Services
         public static bool wasFileLaunched = false;
 
         StorageFile LoadedFile;
-        string FileContent;
+        readonly string FileContent;
 
 
         public FileLaunchService(StorageFile loadedFile)
