@@ -10,7 +10,7 @@ namespace Write_A_Thon.Services
 {
     public class FileIOService
     {
-        public EventHandler LoadRequested;
+        public event EventHandler LoadRequested;
 
         public void RequestToLoadFile() => LoadRequested?.Invoke(this, EventArgs.Empty);
         

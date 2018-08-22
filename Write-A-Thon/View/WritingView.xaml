@@ -11,12 +11,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     xmlns:vm="using:Write_A_Thon.ViewModel">
     <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:///Styles/Styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <vm:WritingViewModel x:Name="ViewModel"/>
-        </ResourceDictionary>
+        <ResourceDictionary Source="ms-appx:///Styles/Styles.xaml"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
