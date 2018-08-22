@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Write_A_Thon.Helpers;
 
 namespace Write_A_Thon.Services
 {
@@ -15,21 +16,29 @@ namespace Write_A_Thon.Services
         string FileContent;
 
 
-        public FileLaunchService(string fileContent, StorageFile loadedFile)
+        public FileLaunchService(StorageFile loadedFile)
         {
             LoadedFile = loadedFile;
-            FileContent = fileContent;
 
-            wasFileLaunched = true;
+            try
+            {
+                FileContent = Task.Run(async () => await new FileIOHelper().GetContentFromFileAsync(LoadedFile)).GetAwaiter().GetResult();
+                wasFileLaunched = true;
+            }
+            catch (Exception)
+            {
+
+                
+            }
         }
 
         public (string fileContent, StorageFile loadedFile) GetLaunchFileData()
         {
             return (FileContent, LoadedFile);
-            
+
         }
 
 
-      
+
     }
 }

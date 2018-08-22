@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -17,6 +18,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Write_A_Thon.Helpers;
+using Write_A_Thon.Services;
 
 namespace Write_A_Thon
 {
@@ -25,6 +28,10 @@ namespace Write_A_Thon
     /// </summary>
     sealed partial class App : Application
     {
+
+        public static FileIOService fileIOService = new FileIOService();
+        public static FileLaunchService fileLaunchService;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -80,7 +87,7 @@ namespace Write_A_Thon
         {
             PrepareTitleBar();
             ExtendTitleBar();
-            
+
         }
 
         private void PrepareTitleBar()
@@ -123,6 +130,51 @@ namespace Write_A_Thon
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        protected override void OnFileActivated(FileActivatedEventArgs args)
+        {
+            PerformLaunchPreperations();
+
+            // TODO: Handle file activation
+            // The number of files received is args.Files.Size
+            // The name of the first file is args.Files[0].Name
+
+            var file = args.Files[0];
+            var storageFile = (StorageFile)file;
+
+            fileLaunchService = new FileLaunchService(storageFile);
+
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (!(Window.Current.Content is Frame rootFrame))
+            {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+
+                rootFrame.NavigationFailed += OnNavigationFailed;
+
+                if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                {
+                    //TODO: Load state from previously suspended application
+                }
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+
+
+            if (rootFrame.Content == null)
+            {
+                // When the navigation stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigation
+                // parameter
+
+                rootFrame.Navigate(typeof(Shell));
+            }
+            // Ensure the current window is active
+            Window.Current.Activate();
         }
     }
 }

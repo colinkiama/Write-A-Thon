@@ -26,8 +26,14 @@ namespace Write_A_Thon.ViewModel
 
         public WritingViewModel()
         {
-            FileLaunchService fileLaunchService = new FileLaunchService("djsklad", null);
-            (EditorText, loadedFile) = fileLaunchService.GetLaunchFileData();
+            
+
+            if (FileLaunchService.wasFileLaunched)
+            {
+                
+                (EditorText, loadedFile) = App.fileLaunchService.GetLaunchFileData();
+
+            }
             Debug.WriteLine(EditorText);
             Debug.WriteLine(loadedFile);
         }

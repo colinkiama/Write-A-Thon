@@ -10,13 +10,9 @@ namespace Write_A_Thon.Services
 {
     public class FileIOService
     {
-        private string launchFileContent;
+        public EventHandler LoadRequested;
 
-        public string MyProperty
-        {
-            get { return launchFileContent; }
-            set { launchFileContent = value; }
-        }
-
+        public void RequestToLoadFile() => LoadRequested?.Invoke(this, EventArgs.Empty);
+        
     }
 }
