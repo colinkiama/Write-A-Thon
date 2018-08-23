@@ -52,14 +52,21 @@ namespace Write_A_Thon.View
             SetRichEditBoxContent(EditorText);
         }
 
-        private void FileIOService_SaveRequested(object sender, EventArgs e)
+        private async void FileIOService_SaveRequested(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (loadedFile == null)
+            {
+                FileIOService_SaveAsRequested(null, EventArgs.Empty);
+            }
+            else
+            {
+                await fileIOHelper.SaveFileAsync(GetRichEditBoxContent(), loadedFile);
+            }
         }
 
-        private void FileIOService_SaveAsRequested(object sender, EventArgs e)
+        private async void FileIOService_SaveAsRequested(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            await fileIOHelper.SaveFileAsync(GetRichEditBoxContent());
         }
 
         private async void FileIOService_LoadRequested(object sender, EventArgs e)
@@ -70,7 +77,7 @@ namespace Write_A_Thon.View
                 if (CheckIfSavedContentHasChanged() == true)
                 {
                     var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
-                    if (result == ContentDialogResult.Primary)
+                    if (result != ContentDialogResult.None)
                     {
                         await fileIOHelper.SaveFileAsync(richEditBoxContent, loadedFile, true);
                     }
@@ -85,7 +92,7 @@ namespace Write_A_Thon.View
             else
             {
                 var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
-                if (result == ContentDialogResult.Primary)
+                if (result != ContentDialogResult.None)
                 {
                     await fileIOHelper.SaveFileAsync(richEditBoxContent, true);
                 }
