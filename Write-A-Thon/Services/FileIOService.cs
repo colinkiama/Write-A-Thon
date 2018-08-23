@@ -13,8 +13,9 @@ namespace Write_A_Thon.Services
         public event EventHandler LoadRequested;
         public event EventHandler SaveRequested;
         public event EventHandler SaveAsRequested;
+        public event EventHandler NewFileRequested;
 
-        public void RequestToSaveFile(bool forceSaveDialog)
+        public void RequestToSaveFile(bool forceSaveDialog = false)
         {
             if (forceSaveDialog)
             {
@@ -26,6 +27,7 @@ namespace Write_A_Thon.Services
             }
         }
         public void RequestToLoadFile() => LoadRequested?.Invoke(this, EventArgs.Empty);
-        
+
+        public void RequsetNewFile() => NewFileRequested?.Invoke(this, EventArgs.Empty);
     }
 }

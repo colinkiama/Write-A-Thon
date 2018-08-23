@@ -28,6 +28,12 @@ namespace Write_A_Thon
 
     public sealed partial class Shell : Page
     {
+
+        const string newFileString = "New File";
+        const string saveString = "Save";
+        const string saveAsString = "Save As...";
+        const string loadFileString = "Load File";
+
         public static FileIOService fileIOService = new FileIOService();
         public Shell()
         {
@@ -106,6 +112,26 @@ namespace Write_A_Thon
         private async void SettingsFrame_Loaded(object sender, RoutedEventArgs e)
         {
             await HideSettingsFrame(0);
+        }
+
+        private void MenuListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string clickedContent = (string)e.ClickedItem;
+            switch (clickedContent)
+            {
+                case newFileString:
+                    App.fileIOService.RequsetNewFile();
+                    break;
+                case saveString:
+                    App.fileIOService.RequestToSaveFile();
+                    break;
+                case saveAsString:
+                    App.fileIOService.RequestToSaveFile(true);
+                    break;
+                case loadFileString:
+                    App.fileIOService.RequestToLoadFile();
+                    break;
+            }
         }
     }
 }

@@ -44,7 +44,9 @@
               Canvas.ZIndex="10"
               Margin="0,0,0,24">
             <ListView Margin="0,80,0,0" IsItemClickEnabled="True"
-                      SelectionMode="None">
+                      SelectionMode="None"
+                      Name="MenuListView"
+                      ItemClick="MenuListView_ItemClick">
                 <ListViewItem Content="New File"/>
                 <ListViewItem Content="Save"/>
                 <ListViewItem Content="Save As..."/>
