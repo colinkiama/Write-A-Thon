@@ -36,6 +36,7 @@ namespace Write_A_Thon.View
         public WritingView()
         {
             this.InitializeComponent();
+            App.fileIOService.NewFileRequested += FileIOService_NewFileRequested;
             App.fileIOService.SaveRequested += FileIOService_SaveRequested;
             App.fileIOService.SaveAsRequested += FileIOService_SaveAsRequested;
             App.fileIOService.LoadRequested += FileIOService_LoadRequested;
@@ -52,6 +53,37 @@ namespace Write_A_Thon.View
             SetRichEditBoxContent(EditorText);
         }
 
+        private async void FileIOService_NewFileRequested(object sender, EventArgs e)
+        {
+            if (fileNeedsToSave)
+            {
+                var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
+                if (result != ContentDialogResult.None)
+                {
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        await fileIOHelper.SaveFileAsync(GetRichEditBoxContent(), true);
+                    }
+
+                    ClearWritingView();
+                }
+
+            }
+            else
+            {
+                ClearWritingView();
+            }
+        }
+
+        private void ClearWritingView()
+        {
+            SetRichEditBoxContent(string.Empty);
+            loadedFile = null;
+            fileSaved = false;
+            fileNeedsToSave = false;
+
+        }
+
         private async void FileIOService_SaveRequested(object sender, EventArgs e)
         {
             if (loadedFile == null)
@@ -60,7 +92,7 @@ namespace Write_A_Thon.View
             }
             else
             {
-                await fileIOHelper.SaveFileAsync(GetRichEditBoxContent(), loadedFile);
+                fileNeedsToSave = !await fileIOHelper.SaveFileAsync(GetRichEditBoxContent(), loadedFile);
             }
         }
 
@@ -79,14 +111,17 @@ namespace Write_A_Thon.View
                     var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
                     if (result != ContentDialogResult.None)
                     {
-                        await fileIOHelper.SaveFileAsync(richEditBoxContent, loadedFile, true);
+                        if (result == ContentDialogResult.Primary)
+                        {
+                            await fileIOHelper.SaveFileAsync(richEditBoxContent, loadedFile, true);
+                        }
                     }
                     else
                     {
                         return;
                     }
                 }
-                
+
             }
 
             else
@@ -94,14 +129,14 @@ namespace Write_A_Thon.View
                 var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
                 if (result != ContentDialogResult.None)
                 {
-                    await fileIOHelper.SaveFileAsync(richEditBoxContent, true);
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        await fileIOHelper.SaveFileAsync(richEditBoxContent, true);
+                    }
                 }
-                else
-                {
-                    return;
-                }
+                
             }
-           
+
 
             StorageFile fileToLoad = await fileIOHelper.LoadFileAsync();
 
