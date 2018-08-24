@@ -20,6 +20,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Write_A_Thon.Helpers;
 using Write_A_Thon.Services;
+using Write_A_Thon.View;
 
 namespace Write_A_Thon
 {
@@ -76,7 +77,8 @@ namespace Write_A_Thon
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(Shell), e.Arguments);
+                    //rootFrame.Navigate(typeof(Shell), e.Arguments);
+                    rootFrame.Navigate(typeof(GoalSettingView));
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
