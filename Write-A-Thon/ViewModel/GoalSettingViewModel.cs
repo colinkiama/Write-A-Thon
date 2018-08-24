@@ -56,18 +56,32 @@ namespace Write_A_Thon.ViewModel
 
         private void UpdateGoalSummaryString()
         {
-            int wordsToWritePerDay = CalculateNumOfWordsToWritePerDay();
-            GoalSummaryString = $"Based on your answers, you should do {wordsToWritePerDay} per day.";
+            uint wordsToWritePerDay = CalculateNumOfWordsToWritePerDay();
+            GoalSummaryString = $"Based on your answers, you should write {wordsToWritePerDay} words per day.";
         }
 
-        private int CalculateNumOfWordsToWritePerDay()
+        private uint CalculateNumOfWordsToWritePerDay()
         {
-            return 0;
+            uint numOfWordsPerDay = 0;
+            if (TotalWordsToWrite > 0)
+            {
+                var currentDate = DateTimeOffset.UtcNow;
+                TimeSpan timeBetweenNowAndDeadline = SelectedDueDate - currentDate;
+                double totalDaysTillDeadline = timeBetweenNowAndDeadline.TotalDays;
+                if (totalDaysTillDeadline > 0)
+                {
+                    uint roundedUpDaysTillDeadline = 1;
+                    if (totalDaysTillDeadline > 1)
+                    {
+                        roundedUpDaysTillDeadline = (uint)Math.Ceiling(totalDaysTillDeadline);
+                    }
+                    numOfWordsPerDay = TotalWordsToWrite / roundedUpDaysTillDeadline;
+                }
+
+            }
+            return numOfWordsPerDay;
         }
 
-        private int CalculateNumOfDaysToCompleteWork()
-        {
-            return 0;
-        }
+
     }
 }

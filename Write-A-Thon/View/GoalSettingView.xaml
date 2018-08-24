@@ -56,7 +56,7 @@
         </RelativePanel>
         <FlipView Grid.Row="1" Background="Transparent" Name="GoalSettingFlipView"
                   Margin="0,20,0,0"
-                  Padding="0,-72,0,0"
+                  Padding="12,-72,12,0"
                   FocusVisualPrimaryThickness="0"
                   FocusVisualSecondaryThickness="0">
             <FlipViewItem>
@@ -140,7 +140,7 @@
             </FlipViewItem>
             <FlipViewItem>
                 <RelativePanel>
-                    <TextBlock Text="{x:Bind ViewModel.GoalSummaryString}"
+                    <TextBlock Text="{x:Bind ViewModel.GoalSummaryString, Mode=OneWay}"
                                Style="{StaticResource TitleTextBlock}"
                                RelativePanel.AlignHorizontalCenterWithPanel="True"
                                RelativePanel.AlignVerticalCenterWithPanel="True"/>
