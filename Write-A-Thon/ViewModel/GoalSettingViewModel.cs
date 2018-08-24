@@ -18,6 +18,7 @@ namespace Write_A_Thon.ViewModel
             {
                 _totalWordsToWrite = value;
                 NotifyPropertyChanged();
+                UpdateGoalSummaryString();
             }
         }
 
@@ -30,6 +31,7 @@ namespace Write_A_Thon.ViewModel
             {
                 _selectedDueDate = value;
                 NotifyPropertyChanged();
+                UpdateGoalSummaryString();
             }
         }
 
@@ -38,7 +40,9 @@ namespace Write_A_Thon.ViewModel
         public string GoalSummaryString
         {
             get { return _goalSummaryString; }
-            set { _goalSummaryString = value;
+            set
+            {
+                _goalSummaryString = value;
                 NotifyPropertyChanged();
             }
         }
@@ -49,11 +53,6 @@ namespace Write_A_Thon.ViewModel
             SelectedDueDate = DateTimeOffset.UtcNow;
         }
 
-        public override void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            base.NotifyPropertyChanged(propertyName);
-            UpdateGoalSummaryString();
-        }
 
         private void UpdateGoalSummaryString()
         {
