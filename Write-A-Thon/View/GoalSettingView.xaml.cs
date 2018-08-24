@@ -27,14 +27,6 @@ namespace Write_A_Thon.View
             this.InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var txtBox = (TextBox)sender;
-            if (txtBox.Text == string.Empty)
-            {
-                txtBox.Text = "0";
-                txtBox.SelectAll();
-            }
-        }
+       
     }
 }

@@ -20,14 +20,17 @@ namespace Write_A_Thon.ViewModel
             {
                 _totalWordsToWrite = value;
                 NotifyPropertyChanged();
+                FlipViewStep2NavForwardCommand?.RaiseCanExecuteChanged();
                 UpdateGoalSummaryString();
             }
         }
 
 
-        public RelayCommand<FlipView> FlipViewNavForwardCommand { get; set; }
+        public RelayCommand<FlipView> FlipViewStep1NavForwardCommand { get; set; }
 
-        public RelayCommand<FlipView>  FlipViewNavBackCommand{ get; set; }
+        public RelayCommand<FlipView> FlipViewStep2NavForwardCommand { get; set; }
+
+        public RelayCommand<FlipView> FlipViewNavBackCommand { get; set; }
 
 
         private DateTimeOffset _selectedDueDate;
@@ -39,6 +42,7 @@ namespace Write_A_Thon.ViewModel
             {
                 _selectedDueDate = value;
                 NotifyPropertyChanged();
+                FlipViewStep1NavForwardCommand?.RaiseCanExecuteChanged();
                 UpdateGoalSummaryString();
             }
         }
@@ -59,13 +63,19 @@ namespace Write_A_Thon.ViewModel
         public GoalSettingViewModel()
         {
             SelectedDueDate = DateTimeOffset.UtcNow;
-            FlipViewNavForwardCommand = new RelayCommand<FlipView>(StepForward, CompletedThingsCorrectly);
+            FlipViewStep1NavForwardCommand = new RelayCommand<FlipView>(StepForward, CheckIfValidDateIsEntered);
+            FlipViewStep2NavForwardCommand = new RelayCommand<FlipView>(StepForward, CheckIfValidNumberIsEntered);
             FlipViewNavBackCommand = new RelayCommand<FlipView>(StepBack);
         }
 
-        private bool CompletedThingsCorrectly()
+        private bool CheckIfValidNumberIsEntered()
         {
-            return true;
+            return TotalWordsToWrite > 0;
+        }
+
+        private bool CheckIfValidDateIsEntered()
+        {
+            return SelectedDueDate > DateTimeOffset.UtcNow;
         }
 
         private void StepBack(FlipView flipView)
@@ -107,6 +117,21 @@ namespace Write_A_Thon.ViewModel
 
             }
             return numOfWordsPerDay;
+        }
+
+        public void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var txtBox = (TextBox)sender;
+            if (txtBox.Text == string.Empty)
+            {
+                txtBox.Text = "0";
+                txtBox.SelectAll();
+            }
+            bool parsed = uint.TryParse(txtBox.Text, out uint result);
+            if (parsed)
+            {
+                TotalWordsToWrite = result;
+            }
         }
 
 

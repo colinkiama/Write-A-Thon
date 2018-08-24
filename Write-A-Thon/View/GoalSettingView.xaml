@@ -82,7 +82,7 @@
                            RelativePanel.AlignHorizontalCenterWithPanel="True"
                             Margin="0,0,0,20"
                             Style="{ThemeResource directionButtonStyle}"
-                             Command="{x:Bind ViewModel.FlipViewNavForwardCommand}"
+                             Command="{x:Bind ViewModel.FlipViewStep1NavForwardCommand}"
                                 CommandParameter="{x:Bind GoalSettingFlipView, Mode=OneWay}">
                         <Button.Content>
 
@@ -111,7 +111,7 @@
                              Width="200"
                              Text="{x:Bind ViewModel.TotalWordsToWrite, Mode=TwoWay}"
                              Background="Transparent"
-                             TextChanged="TextBox_TextChanged"
+                             TextChanged="{x:Bind ViewModel.TextBox_TextChanged}"
                              extensions:TextBoxRegex.ValidationMode="Dynamic"
                  extensions:TextBoxRegex.ValidationType="Number"/>
                     <StackPanel RelativePanel.AlignBottomWithPanel="True"
@@ -133,7 +133,7 @@
                            RelativePanel.AlignHorizontalCenterWithPanel="True"
                             Margin="50,0,0,20"
                             Style="{ThemeResource directionButtonStyle}"
-                                 Command="{x:Bind ViewModel.FlipViewNavForwardCommand}"
+                                 Command="{x:Bind ViewModel.FlipViewStep2NavForwardCommand}"
                                 CommandParameter="{x:Bind GoalSettingFlipView, Mode=OneWay}">
                             <Button.Content>
 
