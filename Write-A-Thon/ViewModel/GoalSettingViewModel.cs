@@ -63,12 +63,12 @@ namespace Write_A_Thon.ViewModel
 
         private int CalculateNumOfWordsToWritePerDay()
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         private int CalculateNumOfDaysToCompleteWork()
         {
-            throw new NotImplementedException();
+            return 0;
         }
     }
 }
