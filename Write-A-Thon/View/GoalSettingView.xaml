@@ -18,10 +18,21 @@
             <Setter Property="Foreground"
                     Value="White"/>
         </Style>
+        <Style x:Key="TitleTextBlock" TargetType="TextBlock" BasedOn="{StaticResource RegularTextBlock}">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
 
+        <Style TargetType="FlipViewItem">
+            <Setter Property="Padding" Value="12,0"/>
+        </Style>
+        
         <Style x:Key="directionButtonStyle" TargetType="Button" BasedOn="{StaticResource TextBlockButtonStyle}">
             <Setter Property="Foreground" Value="White"/>
         </Style>
+
     </Page.Resources>
     <Grid Padding="0,52,0,0" Background="{ThemeResource SystemControlAccentAcrylicWindowAccentMediumHighBrush}">
         <Grid.RowDefinitions>
@@ -45,19 +56,17 @@
         </RelativePanel>
         <FlipView Grid.Row="1" Background="Transparent" Name="GoalSettingFlipView"
                   Margin="0,20,0,0"
-                  Padding="0,-72,0,0">
+                  Padding="0,-72,0,0"
+                  FocusVisualPrimaryThickness="0"
+                  FocusVisualSecondaryThickness="0">
             <FlipViewItem>
 
                 <RelativePanel>
                     <TextBlock Text="When is your work due?"
-                               FontWeight="Bold"
-                               FontSize="50"
                                RelativePanel.AlignHorizontalCenterWithPanel="True"
                                RelativePanel.AlignVerticalCenterWithPanel="True"
                                Name="Step1QuestionTextBlock"
-                               TextWrapping="WrapWholeWords"
-                               TextAlignment="Center"
-                               Style="{StaticResource RegularTextBlock}"/>
+                               Style="{StaticResource TitleTextBlock}"/>
                     <CalendarDatePicker RelativePanel.AlignHorizontalCenterWithPanel="True"
                                         RelativePanel.Below="Step1QuestionTextBlock"
                                         Width="200"
@@ -66,7 +75,8 @@
                                         Foreground="White"
                                         Background="Transparent"
                                         Margin="0,40,0,0"
-                                        Name="GoalDatePicker"/>
+                                        Name="GoalDatePicker"
+                                       Date="{x:Bind ViewModel.SelectedDueDate, Mode=TwoWay}"/>
                     <Button RelativePanel.AlignBottomWithPanel="True"
                            RelativePanel.AlignHorizontalCenterWithPanel="True"
                             Margin="0,0,0,20"
@@ -79,13 +89,90 @@
                                           Margin="4,0,0,0"/>
                             </StackPanel>
                         </Button.Content>
-                        
+
                     </Button>
                 </RelativePanel>
             </FlipViewItem>
+
             <FlipViewItem>
+                <RelativePanel>
+                    <TextBlock Text="How many words do you need to write?"
+                               Style="{StaticResource TitleTextBlock}"
+                               Name="Step2QuestionTextBlock"
+                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                    <TextBox PlaceholderText="200, 500, 1500... etc."
+                             RelativePanel.Below="Step2QuestionTextBlock"
+                             RelativePanel.AlignHorizontalCenterWithPanel="True"
+                             Margin="0,40,0,0"
+                             Width="200"
+                             Text="{x:Bind ViewModel.TotalWordsToWrite, Mode=TwoWay}"
+                             Background="Transparent"/>
+                    <StackPanel RelativePanel.AlignBottomWithPanel="True"
+                                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                Orientation="Horizontal">
+                        <Button Name="BackButton" Margin="0,0,0,20"
+                                Style="{ThemeResource directionButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00E;" />
+                                    <TextBlock Text="Back" Margin="4,0,0,0"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+
+                        <Button RelativePanel.AlignBottomWithPanel="True"
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                            Margin="50,0,0,20"
+                            Style="{ThemeResource directionButtonStyle}">
+                            <Button.Content>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Next"/>
+                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00F;" 
+                                          Margin="4,0,0,0"/>
+                                </StackPanel>
+                            </Button.Content>
+
+                        </Button>
+                    </StackPanel>
+                </RelativePanel>
             </FlipViewItem>
             <FlipViewItem>
+                <RelativePanel>
+                    <TextBlock Text="{x:Bind ViewModel.GoalSummaryString}"
+                               Style="{StaticResource TitleTextBlock}"
+                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                    <StackPanel RelativePanel.AlignBottomWithPanel="True"
+                                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                Orientation="Horizontal">
+                        <Button Margin="0,0,0,20"
+                                Style="{ThemeResource directionButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00E;" />
+                                    <TextBlock Text="Back" Margin="4,0,0,0"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+
+                        <Button RelativePanel.AlignBottomWithPanel="True"
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                            Margin="50,0,0,20"
+                            Style="{ThemeResource directionButtonStyle}">
+                            <Button.Content>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Get Started!"/>
+                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE001;" 
+                                          Margin="4,0,0,0"/>
+                                </StackPanel>
+                            </Button.Content>
+
+                        </Button>
+                    </StackPanel>
+                </RelativePanel>
             </FlipViewItem>
         </FlipView>
     </Grid>
