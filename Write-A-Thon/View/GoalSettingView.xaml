@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:Write_A_Thon.Converters"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
     mc:Ignorable="d"
     xmlns:vm="using:Write_A_Thon.ViewModel"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -80,7 +81,9 @@
                     <Button RelativePanel.AlignBottomWithPanel="True"
                            RelativePanel.AlignHorizontalCenterWithPanel="True"
                             Margin="0,0,0,20"
-                            Style="{ThemeResource directionButtonStyle}">
+                            Style="{ThemeResource directionButtonStyle}"
+                             Command="{x:Bind ViewModel.FlipViewNavForwardCommand}"
+                                CommandParameter="{x:Bind GoalSettingFlipView, Mode=OneWay}">
                         <Button.Content>
 
                             <StackPanel Orientation="Horizontal">
@@ -101,18 +104,23 @@
                                Name="Step2QuestionTextBlock"
                                RelativePanel.AlignHorizontalCenterWithPanel="True"
                                RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                    <TextBox PlaceholderText="200, 500, 1500... etc."
-                             RelativePanel.Below="Step2QuestionTextBlock"
+                    
+                    <TextBox RelativePanel.Below="Step2QuestionTextBlock"
                              RelativePanel.AlignHorizontalCenterWithPanel="True"
                              Margin="0,40,0,0"
                              Width="200"
                              Text="{x:Bind ViewModel.TotalWordsToWrite, Mode=TwoWay}"
-                             Background="Transparent"/>
+                             Background="Transparent"
+                             TextChanged="TextBox_TextChanged"
+                             extensions:TextBoxRegex.ValidationMode="Dynamic"
+                 extensions:TextBoxRegex.ValidationType="Number"/>
                     <StackPanel RelativePanel.AlignBottomWithPanel="True"
                                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                                 Orientation="Horizontal">
                         <Button Name="BackButton" Margin="0,0,0,20"
-                                Style="{ThemeResource directionButtonStyle}">
+                                Style="{ThemeResource directionButtonStyle}"
+                                Command="{x:Bind ViewModel.FlipViewNavBackCommand}"
+                                CommandParameter="{x:Bind GoalSettingFlipView, Mode=OneWay}">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00E;" />
@@ -124,7 +132,9 @@
                         <Button RelativePanel.AlignBottomWithPanel="True"
                            RelativePanel.AlignHorizontalCenterWithPanel="True"
                             Margin="50,0,0,20"
-                            Style="{ThemeResource directionButtonStyle}">
+                            Style="{ThemeResource directionButtonStyle}"
+                                 Command="{x:Bind ViewModel.FlipViewNavForwardCommand}"
+                                CommandParameter="{x:Bind GoalSettingFlipView, Mode=OneWay}">
                             <Button.Content>
 
                                 <StackPanel Orientation="Horizontal">
@@ -148,7 +158,9 @@
                                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                                 Orientation="Horizontal">
                         <Button Margin="0,0,0,20"
-                                Style="{ThemeResource directionButtonStyle}">
+                                Style="{ThemeResource directionButtonStyle}"
+                                Command="{x:Bind ViewModel.FlipViewNavBackCommand}"
+                                CommandParameter="{x:Bind GoalSettingFlipView, Mode=OneWay}">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00E;" />

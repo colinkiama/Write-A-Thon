@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
+using Write_A_Thon.Commands;
 
 namespace Write_A_Thon.ViewModel
 {
@@ -21,6 +23,12 @@ namespace Write_A_Thon.ViewModel
                 UpdateGoalSummaryString();
             }
         }
+
+
+        public RelayCommand<FlipView> FlipViewNavForwardCommand { get; set; }
+
+        public RelayCommand<FlipView>  FlipViewNavBackCommand{ get; set; }
+
 
         private DateTimeOffset _selectedDueDate;
 
@@ -51,8 +59,27 @@ namespace Write_A_Thon.ViewModel
         public GoalSettingViewModel()
         {
             SelectedDueDate = DateTimeOffset.UtcNow;
+            FlipViewNavForwardCommand = new RelayCommand<FlipView>(StepForward, CompletedThingsCorrectly);
+            FlipViewNavBackCommand = new RelayCommand<FlipView>(StepBack);
         }
 
+        private bool CompletedThingsCorrectly()
+        {
+            return true;
+        }
+
+        private void StepBack(FlipView flipView)
+        {
+            if (flipView.SelectedIndex > 0)
+            {
+                flipView.SelectedIndex -= 1;
+            }
+        }
+
+        private void StepForward(FlipView flipView)
+        {
+            flipView.SelectedIndex += 1;
+        }
 
         private void UpdateGoalSummaryString()
         {
