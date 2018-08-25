@@ -14,6 +14,9 @@
     <Page.DataContext>
         <vm:Step2ViewModel x:Name="ViewModel"/>
     </Page.DataContext>
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/GoalSettingStyles.xaml"/>
+    </Page.Resources>
     <Grid>
         <RelativePanel>
             <TextBlock Text="How many words do you need to write?"

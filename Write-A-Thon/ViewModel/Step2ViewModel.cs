@@ -34,9 +34,9 @@ namespace Write_A_Thon.ViewModel
             NavForwardCommand = new RelayCommand(NavigateForward, CheckIfValidNumberIsEntered);
         }
 
-        private void NavigateBack()
+        private async void NavigateBack()
         {
-            FrameAnimationHelper.NavigateBack();
+            await FrameAnimationHelper.NavigateBack();
         }
 
         private void NavigateForward()
