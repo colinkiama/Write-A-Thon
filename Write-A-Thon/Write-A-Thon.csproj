@@ -104,6 +104,7 @@
     <Compile Include="Helpers\DialogHelper.cs" />
     <Compile Include="Helpers\FileIOHelper.cs" />
     <Compile Include="Helpers\FileLaunchHelper.cs" />
+    <Compile Include="Helpers\FrameAnimationHelper.cs" />
     <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileIOService.cs" />
@@ -115,9 +116,21 @@
     <Compile Include="ViewModel\InfoBarViewModel.cs" />
     <Compile Include="ViewModel\NotifyingViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\Step1ViewModel.cs" />
+    <Compile Include="ViewModel\Step2ViewModel.cs" />
+    <Compile Include="ViewModel\Step3ViewModel.cs" />
     <Compile Include="ViewModel\WritingViewModel.cs" />
     <Compile Include="View\GoalSettingView.xaml.cs">
       <DependentUpon>GoalSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoalSettingViews\Step1View.xaml.cs">
+      <DependentUpon>Step1View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoalSettingViews\Step2View.xaml.cs">
+      <DependentUpon>Step2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoalSettingViews\Step3View.xaml.cs">
+      <DependentUpon>Step3View.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\InfoBarView.xaml.cs">
       <DependentUpon>InfoBarView.xaml</DependentUpon>
@@ -181,6 +194,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GoalSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GoalSettingViews\Step1View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GoalSettingViews\Step2View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GoalSettingViews\Step3View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

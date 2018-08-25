@@ -15,20 +15,17 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Write_A_Thon.View
+namespace Write_A_Thon.View.GoalSettingViews
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class GoalSettingView : Page
+    public sealed partial class Step1View : Page
     {
-        public GoalSettingView()
+        public Step1View()
         {
             this.InitializeComponent();
             
-           
         }
-
-       
     }
 }
