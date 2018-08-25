@@ -5,11 +5,50 @@
     xmlns:local="using:Write_A_Thon.View.GoalSettingViews"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Write_A_Thon.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    NavigationCacheMode="Required">
+    NavigationCacheMode="Required"
+    Name="thisPage">
+    <Page.DataContext>
+        <vm:Step3ViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+    <!--<Grid>
+        <RelativePanel>
+            <TextBlock Text="{x:Bind ViewModel.GoalSummaryString, Mode=OneWay}"
+                               Style="{StaticResource TitleTextBlock}"
+                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True"/>
+            <StackPanel RelativePanel.AlignBottomWithPanel="True"
+                                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                Orientation="Horizontal">
+                <Button Margin="0,0,0,20"
+                                Style="{ThemeResource directionButtonStyle}"
+                                Command="{x:Bind ViewModel.NavBackCommand}"
+                                CommandParameter="{x:Bind thisPage, Mode=OneWay}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00E;" />
+                            <TextBlock Text="Back" Margin="4,0,0,0"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
 
-    <Grid>
+                <Button RelativePanel.AlignBottomWithPanel="True"
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                            Margin="50,0,0,20"
+                            Style="{ThemeResource directionButtonStyle}">
+                    <Button.Content>
 
-    </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Get Started!"/>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE001;" 
+                                          Margin="4,0,0,0"/>
+                        </StackPanel>
+                    </Button.Content>
+
+                </Button>
+            </StackPanel>
+        </RelativePanel>
+    </Grid>-->
 </Page>

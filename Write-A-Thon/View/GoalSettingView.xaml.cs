@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Write_A_Thon.Helpers;
+using Write_A_Thon.View.GoalSettingViews;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,7 +27,8 @@ namespace Write_A_Thon.View
         public GoalSettingView()
         {
             this.InitializeComponent();
-            
+            FrameAnimationHelper.frame = formFrame;
+            FrameAnimationHelper.Navigate(typeof(Step1View));
            
         }
 

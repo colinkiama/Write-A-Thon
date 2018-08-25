@@ -5,11 +5,64 @@
     xmlns:local="using:Write_A_Thon.View.GoalSettingViews"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+    xmlns:vm="using:Write_A_Thon.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    NavigationCacheMode="Required">
+    NavigationCacheMode="Required"
+    Name="thisPage">
+    <Page.DataContext>
+        <vm:Step2ViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+    <!--<Grid>
+        <RelativePanel>
+            <TextBlock Text="How many words do you need to write?"
+                               Style="{StaticResource TitleTextBlock}"
+                               Name="Step2QuestionTextBlock"
+                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True"/>
 
-    <Grid>
+            <TextBox RelativePanel.Below="Step2QuestionTextBlock"
+                             RelativePanel.AlignHorizontalCenterWithPanel="True"
+                             Margin="0,40,0,0"
+                             Width="200"
+                             Text="{x:Bind ViewModel.TotalWordsToWrite, Mode=TwoWay}"
+                             Background="Transparent"
+                             TextChanged="{x:Bind ViewModel.TextBox_TextChanged}"
+                             extensions:TextBoxRegex.ValidationMode="Dynamic"
+                 extensions:TextBoxRegex.ValidationType="Number"/>
+            <StackPanel RelativePanel.AlignBottomWithPanel="True"
+                                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                Orientation="Horizontal">
+                <Button Name="BackButton" Margin="0,0,0,20"
+                                Style="{ThemeResource directionButtonStyle}"
+                                Command="{x:Bind ViewModel.NavBackCommand}"
+                                CommandParameter="{x:Bind thisPage, Mode=OneWay}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00E;" />
+                            <TextBlock Text="Back" Margin="4,0,0,0"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
 
-    </Grid>
+                <Button RelativePanel.AlignBottomWithPanel="True"
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                            Margin="50,0,0,20"
+                            Style="{ThemeResource directionButtonStyle}"
+                                 Command="{x:Bind ViewModel.NavForwardCommand}"
+                                CommandParameter="{x:Bind thisPage, Mode=OneWay}">
+                    <Button.Content>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Next"/>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00F;" 
+                                          Margin="4,0,0,0"/>
+                        </StackPanel>
+                    </Button.Content>
+
+                </Button>
+            </StackPanel>
+        </RelativePanel>
+    </Grid>-->
 </Page>

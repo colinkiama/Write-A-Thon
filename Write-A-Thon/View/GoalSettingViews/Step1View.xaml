@@ -5,11 +5,51 @@
     xmlns:local="using:Write_A_Thon.View.GoalSettingViews"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Write_A_Thon.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    NavigationCacheMode="Required">
-
+    NavigationCacheMode="Required"
+    Name="thisPage">
+    <Page.DataContext>
+        <vm:Step1ViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/GoalSettingStyles.xaml"/>
+    </Page.Resources>
     <Grid>
+        <RelativePanel>
+            <TextBlock Text="When is your work due?"
+                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True"
+                               Name="Step1QuestionTextBlock"
+                               Style="{StaticResource TitleTextBlock}"/>
+            <CalendarDatePicker RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                        RelativePanel.Below="Step1QuestionTextBlock"
+                                        Width="200"
+                                        PlaceholderText="Enter due date"
+                                        RequestedTheme="Dark"
+                                        Foreground="White"
+                                        Background="Transparent"
+                                        Margin="0,40,0,0"
+                                        Name="GoalDatePicker"
+                                       Date="{x:Bind ViewModel.SelectedDueDate, Mode=TwoWay}"/>
+            <Button RelativePanel.AlignBottomWithPanel="True"
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                            Margin="0,0,0,20"
+                            Style="{ThemeResource directionButtonStyle}"
+                             Command="{x:Bind ViewModel.NavForwardCommand}"
+                    CommandParameter="{x:Bind thisPage, Mode=OneWay}"
+                    >
+                <Button.Content>
 
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Next"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00F;" 
+                                          Margin="4,0,0,0"/>
+                    </StackPanel>
+                </Button.Content>
+
+            </Button>
+        </RelativePanel>
     </Grid>
 </Page>
