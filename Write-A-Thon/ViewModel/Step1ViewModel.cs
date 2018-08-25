@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Write_A_Thon.Commands;
 using Write_A_Thon.Helpers;
+using Write_A_Thon.View.GoalSettingViews;
 
 namespace Write_A_Thon.ViewModel
 {
     class Step1ViewModel:NotifyingViewModel
     {
-        public RelayCommand<Page> NavForwardCommand { get; set; }
+        public RelayCommand NavForwardCommand { get; set; }
 
         private DateTimeOffset _selectedDueDate;
 
@@ -31,7 +32,7 @@ namespace Write_A_Thon.ViewModel
         public Step1ViewModel()
         {
             SelectedDueDate = DateTimeOffset.UtcNow;
-            NavForwardCommand = new RelayCommand<Page>(NavigateForward, CheckIfValidDateIsEntered);
+            NavForwardCommand = new RelayCommand(NavigateForward,CheckIfValidDateIsEntered);
         }
 
         private bool CheckIfValidDateIsEntered()
@@ -39,9 +40,9 @@ namespace Write_A_Thon.ViewModel
             return SelectedDueDate > DateTimeOffset.UtcNow;
         }
 
-        private void NavigateForward(Page currentPage)
+        private void NavigateForward()
         {
-            FrameAnimationHelper.Navigate(currentPage.GetType());
+            FrameAnimationHelper.Navigate(typeof(Step2View));
         }
     }
 }

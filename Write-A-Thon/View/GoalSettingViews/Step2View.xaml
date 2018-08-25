@@ -14,7 +14,7 @@
     <Page.DataContext>
         <vm:Step2ViewModel x:Name="ViewModel"/>
     </Page.DataContext>
-    <!--<Grid>
+    <Grid>
         <RelativePanel>
             <TextBlock Text="How many words do you need to write?"
                                Style="{StaticResource TitleTextBlock}"
@@ -64,5 +64,5 @@
                 </Button>
             </StackPanel>
         </RelativePanel>
-    </Grid>-->
+    </Grid>
 </Page>

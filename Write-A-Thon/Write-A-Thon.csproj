@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\RelayCommandWithParameters.cs" />
     <Compile Include="Converters\IndexToStepsConverter.cs" />
     <Compile Include="Enums\ShortcutType.cs" />
