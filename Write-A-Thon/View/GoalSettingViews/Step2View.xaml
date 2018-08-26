@@ -41,7 +41,8 @@
                 <Button Name="BackButton" Margin="0,0,0,20"
                                 Style="{ThemeResource directionButtonStyle}"
                                 Command="{x:Bind ViewModel.NavBackCommand}"
-                                CommandParameter="{x:Bind thisPage, Mode=OneWay}">
+                                CommandParameter="{x:Bind thisPage, Mode=OneWay}"
+                        Click="BackButton_Click">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00E;" />
@@ -55,7 +56,9 @@
                             Margin="50,0,0,20"
                             Style="{ThemeResource directionButtonStyle}"
                                  Command="{x:Bind ViewModel.NavForwardCommand}"
-                                CommandParameter="{x:Bind thisPage, Mode=OneWay}">
+                                CommandParameter="{x:Bind thisPage, Mode=OneWay}"
+                        Name="ForwardButton"
+                        Click="ForwardButton_Click">
                     <Button.Content>
 
                         <StackPanel Orientation="Horizontal">

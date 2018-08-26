@@ -28,7 +28,9 @@
                 <Button Margin="0,0,0,20"
                                 Style="{ThemeResource directionButtonStyle}"
                                 Command="{x:Bind ViewModel.NavBackCommand}"
-                                CommandParameter="{x:Bind thisPage, Mode=OneWay}">
+                                CommandParameter="{x:Bind thisPage, Mode=OneWay}"
+                        Name="BackButton"
+                        Click="BackButton_Click">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00E;" />

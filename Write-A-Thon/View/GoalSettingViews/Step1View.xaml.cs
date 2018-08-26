@@ -27,5 +27,11 @@ namespace Write_A_Thon.View.GoalSettingViews
             this.InitializeComponent();
             
         }
+
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            GoalSettingView.RaiseFormStepChanged(2);
+        }
     }
 }

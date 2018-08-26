@@ -39,6 +39,8 @@
                             Style="{ThemeResource directionButtonStyle}"
                              Command="{x:Bind ViewModel.NavForwardCommand}"
                     CommandParameter="{x:Bind thisPage, Mode=OneWay}"
+                    Name="NextButton"
+                    Click="NextButton_Click"
                     >
                 <Button.Content>
 

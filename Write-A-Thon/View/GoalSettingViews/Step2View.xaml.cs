@@ -33,5 +33,15 @@ namespace Write_A_Thon.View.GoalSettingViews
             base.OnNavigatedTo(e);
             ViewModel.goalBeingCreated = (Goal)e.Parameter;
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            GoalSettingView.RaiseFormStepChanged(1);
+        }
+
+        private void ForwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            GoalSettingView.RaiseFormStepChanged(3);
+        }
     }
 }
