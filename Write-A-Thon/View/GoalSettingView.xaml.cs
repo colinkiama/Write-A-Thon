@@ -38,9 +38,10 @@ namespace Write_A_Thon.View
 
         }
 
-        private void GoalSettingView_formFinished(object sender, EventArgs e)
+        private async void GoalSettingView_formFinished(object sender, EventArgs e)
         {
-            Frame.Navigate(typeof(Shell), null, new SlideNavigationTransitionInfo());
+            FrameAnimationHelper.frame = this.Frame;
+            await FrameAnimationHelper.Navigate(typeof(Shell));
         }
 
         private void GoalSettingView_formStepChanged(object sender, FormEventArgs args)
