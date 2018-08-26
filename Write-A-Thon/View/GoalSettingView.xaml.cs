@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Write_A_Thon.Events;
 using Write_A_Thon.Helpers;
@@ -26,13 +27,20 @@ namespace Write_A_Thon.View
     public sealed partial class GoalSettingView : Page
     {
         public static event FormEventHandler formStepChanged;
+        static event EventHandler formFinished;
         public GoalSettingView()
         {
             this.InitializeComponent();
             formStepChanged += GoalSettingView_formStepChanged;
+            formFinished += GoalSettingView_formFinished;
             FrameAnimationHelper.frame = formFrame;
             formFrame.Navigate(typeof(Step1View));
 
+        }
+
+        private void GoalSettingView_formFinished(object sender, EventArgs e)
+        {
+            Frame.Navigate(typeof(Shell), null, new SlideNavigationTransitionInfo());
         }
 
         private void GoalSettingView_formStepChanged(object sender, FormEventArgs args)
@@ -45,7 +53,9 @@ namespace Write_A_Thon.View
             formStepChanged?.Invoke(null, new FormEventArgs(stepValue));
         }
 
-
-       
+        internal static void RaiseFormFinished()
+        {
+            formFinished?.Invoke(null, EventArgs.Empty);
+        }
     }
 }

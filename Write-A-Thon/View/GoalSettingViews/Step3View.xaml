@@ -42,7 +42,8 @@
                 <Button RelativePanel.AlignBottomWithPanel="True"
                            RelativePanel.AlignHorizontalCenterWithPanel="True"
                             Margin="50,0,0,20"
-                            Style="{ThemeResource directionButtonStyle}">
+                            Style="{ThemeResource directionButtonStyle}"
+                        Command="{x:Bind ViewModel.FinishFormCommand}">
                     <Button.Content>
 
                         <StackPanel Orientation="Horizontal">

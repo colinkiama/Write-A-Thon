@@ -43,7 +43,7 @@ namespace Write_A_Thon.ViewModel
 
         private async void NavigateForward()
         {
-            goalBeingCreated.TotalWordsPerDay = TotalWordsToWrite;
+            goalBeingCreated.TotalWordsToWrite = TotalWordsToWrite;
             await FrameAnimationHelper.Navigate(typeof(Step3View), goalBeingCreated);
         }
 

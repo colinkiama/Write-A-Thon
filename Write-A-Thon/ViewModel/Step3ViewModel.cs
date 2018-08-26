@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Write_A_Thon.Commands;
 using Write_A_Thon.Helpers;
 using Write_A_Thon.Model;
+using Write_A_Thon.View;
 
 namespace Write_A_Thon.ViewModel
 {
     class Step3ViewModel: NotifyingViewModel
     {
         public RelayCommand NavBackCommand{ get; set; }
+
+        public RelayCommand FinishFormCommand { get; set; }
 
         private Goal _goalBeingCreated;
 
@@ -48,6 +51,12 @@ namespace Write_A_Thon.ViewModel
         public Step3ViewModel()
         {
             NavBackCommand = new RelayCommand(NavigateBack);
+            FinishFormCommand = new RelayCommand(FinishForm);
+        }
+
+        private void FinishForm()
+        {
+            GoalSettingView.RaiseFormFinished();
         }
 
         private async void NavigateBack()

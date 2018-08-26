@@ -103,12 +103,14 @@
     <Compile Include="Events\FormEvent.cs" />
     <Compile Include="Events\PreviewEvent.cs" />
     <Compile Include="Events\ShortcutEvent.cs" />
+    <Compile Include="Events\WordCountEvent.cs" />
     <Compile Include="Helpers\DialogHelper.cs" />
     <Compile Include="Helpers\FileIOHelper.cs" />
     <Compile Include="Helpers\FileLaunchHelper.cs" />
     <Compile Include="Helpers\FrameAnimationHelper.cs" />
     <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Model\Goal.cs" />
+    <Compile Include="Model\GoalProgress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileIOService.cs" />
     <Compile Include="Services\FileLaunchService.cs" />

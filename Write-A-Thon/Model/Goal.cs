@@ -8,7 +8,7 @@ namespace Write_A_Thon.Model
 {
     public class Goal
     {
-        public uint TotalWordsPerDay { get; set; }
+        public uint TotalWordsToWrite { get; set; }
         public DateTimeOffset DueDate { get; set; }
 
 
@@ -16,7 +16,7 @@ namespace Write_A_Thon.Model
         public uint CalculateNumOfWordsToWritePerDay()
         {
             uint numOfWordsPerDay = 0;
-            if (TotalWordsPerDay > 0)
+            if (TotalWordsToWrite > 0)
             {
                 var currentDate = DateTimeOffset.UtcNow;
                 TimeSpan timeBetweenNowAndDeadline = DueDate - currentDate;
@@ -28,7 +28,7 @@ namespace Write_A_Thon.Model
                     {
                         roundedUpDaysTillDeadline = (uint)Math.Ceiling(totalDaysTillDeadline);
                     }
-                    numOfWordsPerDay = TotalWordsPerDay / roundedUpDaysTillDeadline;
+                    numOfWordsPerDay = TotalWordsToWrite / roundedUpDaysTillDeadline;
                 }
 
             }
