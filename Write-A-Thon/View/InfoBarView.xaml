@@ -6,11 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:Write_A_Thon.ViewModel"
+    xmlns:Converters="using:Write_A_Thon.Converters"
     mc:Ignorable="d">
     <Page.DataContext>
         <vm:InfoBarViewModel x:Name="ViewModel"/>
     </Page.DataContext>
 
+    <Page.Resources>
+        <Converters:PercentageConverter x:Name="PercentageConverter"/>
+    </Page.Resources>
     <Grid Background="{ThemeResource SystemControlAccentDark2AcrylicWindowAccentDark2MediumHighBrush}">
         <Grid.Resources>
             <Style TargetType="StackPanel">
@@ -38,7 +42,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Progress: " Margin="0,0,4,0"/>
-                <TextBlock Name="ProgressTextBlock" Text="{x:Bind ViewModel.Progress, Mode=OneWay}"/>
+                <TextBlock Name="ProgressTextBlock" Text="{x:Bind ViewModel.Progress, Mode=OneWay, Converter={StaticResource PercentageConverter}}"/>
             </StackPanel>
         </StackPanel>
     </Grid>
