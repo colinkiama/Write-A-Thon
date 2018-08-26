@@ -28,7 +28,7 @@ namespace Write_A_Thon.View
         {
             this.InitializeComponent();
             FrameAnimationHelper.frame = formFrame;
-            FrameAnimationHelper.Navigate(typeof(Step1View));
+            formFrame.Navigate(typeof(Step1View));
            
         }
 

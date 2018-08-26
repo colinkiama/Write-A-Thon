@@ -17,7 +17,7 @@ namespace Write_A_Thon.Helpers
         private static Compositor _compositor;
         public static Frame frame;
 
-        public async static Task Navigate(Type pageType)
+        public async static Task Navigate(Type pageType, object parameter = null)
         {
             await AnimatePageOut();
             if (CheckIfFirstForwardStackItemHasPageType(pageType))
@@ -26,7 +26,7 @@ namespace Write_A_Thon.Helpers
             }
             else
             {
-                frame.Navigate(pageType, null, new SuppressNavigationTransitionInfo());
+                frame.Navigate(pageType, parameter, new SuppressNavigationTransitionInfo());
             }
 
            await AnimatePageIn();

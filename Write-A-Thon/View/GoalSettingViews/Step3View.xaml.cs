@@ -26,5 +26,11 @@ namespace Write_A_Thon.View.GoalSettingViews
         {
             this.InitializeComponent();
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+        }
     }
 }

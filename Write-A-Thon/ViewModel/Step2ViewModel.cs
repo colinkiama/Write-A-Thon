@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Write_A_Thon.Commands;
 using Write_A_Thon.Helpers;
+using Write_A_Thon.Model;
 using Write_A_Thon.View.GoalSettingViews;
 
 namespace Write_A_Thon.ViewModel
@@ -13,6 +14,7 @@ namespace Write_A_Thon.ViewModel
     class Step2ViewModel:NotifyingViewModel
     {
         private uint _totalWordsToWrite;
+        public Goal goalBeingCreated { get; set; }
 
         public uint TotalWordsToWrite
         {
@@ -39,9 +41,10 @@ namespace Write_A_Thon.ViewModel
             await FrameAnimationHelper.NavigateBack();
         }
 
-        private void NavigateForward()
+        private async void NavigateForward()
         {
-            FrameAnimationHelper.Navigate(typeof(Step3View));
+            goalBeingCreated.TotalWordsPerDay = TotalWordsToWrite;
+            await FrameAnimationHelper.Navigate(typeof(Step3View), goalBeingCreated);
         }
 
         private bool CheckIfValidNumberIsEntered()

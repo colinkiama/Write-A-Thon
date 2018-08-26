@@ -16,7 +16,7 @@
     <Page.Resources>
         <ResourceDictionary Source="ms-appx:///Styles/GoalSettingStyles.xaml"/>
     </Page.Resources>
-    <!--<Grid>
+    <Grid>
         <RelativePanel>
             <TextBlock Text="{x:Bind ViewModel.GoalSummaryString, Mode=OneWay}"
                                Style="{StaticResource TitleTextBlock}"
@@ -53,5 +53,5 @@
                 </Button>
             </StackPanel>
         </RelativePanel>
-    </Grid>-->
+    </Grid>
 </Page>
