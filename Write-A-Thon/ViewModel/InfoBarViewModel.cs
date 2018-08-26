@@ -10,13 +10,65 @@ namespace Write_A_Thon.ViewModel
 {
     public class InfoBarViewModel : NotifyingViewModel
     {
-
-
         private WordCounterService _wordCounterService;
         private InfoBarService _infoBarService;
 
+        private uint _target;
+
+        public uint Target
+        {
+            get { return _target; }
+            set
+            {
+                _target = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        private uint _wordsToWriteToday;
+
+        private uint _wordCount;
+
+        public uint WordCount
+        {
+            get { return _wordCount; }
+            set
+            {
+                _wordCount = value;
+                NotifyPropertyChanged();
+                UpdateProgress();
+            }
+        }
+
+        private void UpdateProgress()
+        {
+            Progress = WordCount / _wordsToWriteToday * 100;
+        }
+
+        private uint _progress;
+
+        public uint Progress
+        {
+            get { return _progress; }
+            set
+            {
+                _progress = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public InfoBarViewModel()
         {
+            _infoBarService = App.InfoBarService;
+            _wordCounterService = App.WordCounterService;
+            _wordCounterService.WordCountChanged += _wordCounterService_WordCountChanged;
+            _wordsToWriteToday = _infoBarService.GetWordsRequiredPerDay();
+        }
+
+        private void _wordCounterService_WordCountChanged(object sender, EventArgs e)
+        {
+            WordCount = _wordCounterService.WordCount;
 
         }
     }

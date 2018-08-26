@@ -32,6 +32,8 @@ namespace Write_A_Thon
 
         public static FileIOService fileIOService = new FileIOService();
         public static FileLaunchService fileLaunchService;
+        internal static WordCounterService WordCounterService = new WordCounterService();
+        internal static InfoBarService InfoBarService;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code

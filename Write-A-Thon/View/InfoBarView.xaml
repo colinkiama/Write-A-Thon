@@ -5,7 +5,11 @@
     xmlns:local="using:Write_A_Thon.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Write_A_Thon.ViewModel"
     mc:Ignorable="d">
+    <Page.DataContext>
+        <vm:InfoBarViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
 
     <Grid Background="{ThemeResource SystemControlAccentDark2AcrylicWindowAccentDark2MediumHighBrush}">
         <Grid.Resources>
@@ -20,9 +24,9 @@
         </Grid.Resources>
         <StackPanel VerticalAlignment="Center" Orientation="Horizontal"
                     Padding="12,0">
-            <TextBlock Name="WordCountTextBlock" Text="Words: 0"/>
-            <TextBlock Name="TargetTextBlock" Text="Target: 1500"/>
-            <TextBlock Name="ProgressTextBlock" Text="Progress: 0%"/>
+            <TextBlock Name="WordCountTextBlock" Text="{x:Bind ViewModel.WordCount, Mode=OneWay}"/>
+            <TextBlock Name="TargetTextBlock" Text="{x:Bind ViewModel.Target, Mode=OneWay}"/>
+            <TextBlock Name="ProgressTextBlock" Text="{x:Bind ViewModel.Progress, Mode=OneWay}"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -35,7 +35,6 @@ namespace Write_A_Thon.ViewModel
         }
 
         
-
         private string _goalSummaryString;
 
         public string GoalSummaryString
@@ -56,6 +55,7 @@ namespace Write_A_Thon.ViewModel
 
         private void FinishForm()
         {
+            App.InfoBarService = new Services.InfoBarService(new GoalProgress(GoalBeingCreated));
             GoalSettingView.RaiseFormFinished();
         }
 
