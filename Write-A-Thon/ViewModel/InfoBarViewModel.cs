@@ -42,7 +42,9 @@ namespace Write_A_Thon.ViewModel
 
         private void UpdateProgress()
         {
-            Progress = WordCount / Target * 100;
+            double wordCount = WordCount;
+            double target = Target;
+            Progress = (uint)(wordCount / target * 100);
         }
 
         private uint _progress;

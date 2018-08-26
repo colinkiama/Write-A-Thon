@@ -74,6 +74,7 @@
                      ScrollViewer.VerticalScrollMode="Auto"
                      Grid.Row="1"
                      Style="{ThemeResource BetterRichEditBoxStyle}"
-                     Name="WritingRichEditBox"/>
+                     Name="WritingRichEditBox"
+                     TextChanged="WritingRichEditBox_TextChanged"/>
     </Grid>
 </Page>

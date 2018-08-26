@@ -170,5 +170,12 @@ namespace Write_A_Thon.View
             WritingRichEditBox.Document.GetText(TextGetOptions.FormatRtf, out string contentToReturn);
             return contentToReturn;
         }
+
+        private void WritingRichEditBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            var reb = (RichEditBox)sender;
+            reb.Document.GetText(TextGetOptions.NoHidden, out string rebContent);
+            WordCounterService.CalculateWordCount(rebContent);
+        }
     }
 }
