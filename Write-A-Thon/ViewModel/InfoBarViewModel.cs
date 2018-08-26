@@ -26,7 +26,6 @@ namespace Write_A_Thon.ViewModel
         }
 
 
-        private uint _wordsToWriteToday;
 
         private uint _wordCount;
 
@@ -43,7 +42,7 @@ namespace Write_A_Thon.ViewModel
 
         private void UpdateProgress()
         {
-            Progress = WordCount / _wordsToWriteToday * 100;
+            Progress = WordCount / Target * 100;
         }
 
         private uint _progress;
@@ -63,7 +62,7 @@ namespace Write_A_Thon.ViewModel
             _infoBarService = App.InfoBarService;
             _wordCounterService = App.WordCounterService;
             _wordCounterService.WordCountChanged += _wordCounterService_WordCountChanged;
-            _wordsToWriteToday = _infoBarService.GetWordsRequiredPerDay();
+            Target = _infoBarService.GetWordsRequiredPerDay();
         }
 
         private void _wordCounterService_WordCountChanged(object sender, EventArgs e)
