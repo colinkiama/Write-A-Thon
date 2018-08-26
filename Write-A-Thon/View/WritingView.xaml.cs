@@ -47,7 +47,7 @@ namespace Write_A_Thon.View
             }
             else
             {
-                EditorText = "Yo mama";
+                EditorText = String.Empty;
             }
 
             SetRichEditBoxContent(EditorText);
