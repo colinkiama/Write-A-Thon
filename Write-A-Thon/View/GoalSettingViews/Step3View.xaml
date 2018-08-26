@@ -17,7 +17,7 @@
         <ResourceDictionary Source="ms-appx:///Styles/GoalSettingStyles.xaml"/>
     </Page.Resources>
     <Grid>
-        <RelativePanel>
+        <RelativePanel Style="{StaticResource PaddedRelativePanel}">
             <TextBlock Text="{x:Bind ViewModel.GoalSummaryString, Mode=OneWay}"
                                Style="{StaticResource TitleTextBlock}"
                                RelativePanel.AlignHorizontalCenterWithPanel="True"

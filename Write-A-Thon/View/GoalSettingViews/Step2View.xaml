@@ -18,7 +18,7 @@
         <ResourceDictionary Source="ms-appx:///Styles/GoalSettingStyles.xaml"/>
     </Page.Resources>
     <Grid>
-        <RelativePanel>
+        <RelativePanel Style="{StaticResource PaddedRelativePanel}">
             <TextBlock Text="How many words do you need to write?"
                                Style="{StaticResource TitleTextBlock}"
                                Name="Step2QuestionTextBlock"
@@ -33,7 +33,8 @@
                              Background="Transparent"
                              TextChanged="{x:Bind ViewModel.TextBox_TextChanged}"
                              extensions:TextBoxRegex.ValidationMode="Dynamic"
-                 extensions:TextBoxRegex.ValidationType="Number"/>
+                 extensions:TextBoxRegex.ValidationType="Number"
+                     Name="TotalDaysTextBox"/>
             <StackPanel RelativePanel.AlignBottomWithPanel="True"
                                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                                 Orientation="Horizontal">

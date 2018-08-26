@@ -85,7 +85,6 @@ namespace Write_A_Thon.Helpers
                 var visual = ElementCompositionPreview.GetElementVisual(page);
 
                 string offsetToUse = $"{frame.ActualWidth}";
-                string defaultOffset = "-140";
 
                 KeyFrameAnimation offsetInAnimation = _compositor.CreateScalarKeyFrameAnimation();
                 offsetInAnimation.InsertExpressionKeyFrame(1f, offsetToUse);

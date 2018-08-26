@@ -17,7 +17,7 @@
         <ResourceDictionary Source="ms-appx:///Styles/GoalSettingStyles.xaml"/>
     </Page.Resources>
     <Grid>
-        <RelativePanel>
+        <RelativePanel Style="{StaticResource PaddedRelativePanel}">
             <TextBlock Text="When is your work due?"
                                RelativePanel.AlignHorizontalCenterWithPanel="True"
                                RelativePanel.AlignVerticalCenterWithPanel="True"

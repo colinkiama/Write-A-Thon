@@ -20,4 +20,8 @@
     <Style x:Key="directionButtonStyle" TargetType="Button" BasedOn="{StaticResource TextBlockButtonStyle}">
         <Setter Property="Foreground" Value="White"/>
     </Style>
+
+    <Style x:Key="PaddedRelativePanel" TargetType="RelativePanel">
+        <Setter Property="Padding" Value="12,0"/>
+    </Style>
 </ResourceDictionary>
