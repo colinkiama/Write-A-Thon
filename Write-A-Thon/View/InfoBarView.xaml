@@ -13,9 +13,12 @@
 
     <Grid Background="{ThemeResource SystemControlAccentDark2AcrylicWindowAccentDark2MediumHighBrush}">
         <Grid.Resources>
-            <Style TargetType="TextBlock">
+            <Style TargetType="StackPanel">
                 <Setter Property="Margin"
                         Value="0,0,12,0"/>
+            </Style>
+
+            <Style TargetType="TextBlock">
                 <Setter Property="Foreground"
                         Value="White"/>
                 <Setter Property="FontSize"
@@ -24,9 +27,19 @@
         </Grid.Resources>
         <StackPanel VerticalAlignment="Center" Orientation="Horizontal"
                     Padding="12,0">
-            <TextBlock Name="WordCountTextBlock" Text="{x:Bind ViewModel.WordCount, Mode=OneWay}"/>
-            <TextBlock Name="TargetTextBlock" Text="{x:Bind ViewModel.Target, Mode=OneWay}"/>
-            <TextBlock Name="ProgressTextBlock" Text="{x:Bind ViewModel.Progress, Mode=OneWay}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Words: " Margin="0,0,4,0"/>
+                <TextBlock Name="WordCountTextBlock" Text="{x:Bind ViewModel.WordCount, Mode=OneWay}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Target: " Margin="0,0,4,0"/>
+                <TextBlock Name="TargetTextBlock" Text="{x:Bind ViewModel.Target, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Progress: " Margin="0,0,4,0"/>
+                <TextBlock Name="ProgressTextBlock" Text="{x:Bind ViewModel.Progress, Mode=OneWay}"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
