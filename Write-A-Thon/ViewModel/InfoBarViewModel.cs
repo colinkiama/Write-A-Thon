@@ -44,7 +44,13 @@ namespace Write_A_Thon.ViewModel
         {
             double wordCount = WordCount;
             double target = Target;
-            Progress = (uint)(wordCount / target * 100);
+            uint Percentage = (uint)(wordCount / target * 100);
+            Progress = CheckIfPercentageIsTooHigh(Percentage) ? 100 : Percentage;
+        }
+
+        private bool CheckIfPercentageIsTooHigh(uint percentage)
+        {
+            return percentage > 100;
         }
 
         private uint _progress;
