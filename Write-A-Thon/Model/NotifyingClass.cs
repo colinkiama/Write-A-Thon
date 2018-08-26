@@ -6,9 +6,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Write_A_Thon.ViewModel
+namespace Write_A_Thon.Model
 {
-    public abstract class NotifyingViewModel : INotifyPropertyChanged
+    public abstract class NotifyingClass : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -9,7 +9,7 @@ using Write_A_Thon.Model;
 
 namespace Write_A_Thon.ViewModel
 {
-    class Step3ViewModel: NotifyingViewModel
+    class Step3ViewModel: NotifyingClass
     {
         public RelayCommand NavBackCommand{ get; set; }
 
@@ -27,31 +27,11 @@ namespace Write_A_Thon.ViewModel
 
         private void UpdateGoalSummary()
         {
-            uint wordsToWritePerDay = CalculateNumOfWordsToWritePerDay();
+            uint wordsToWritePerDay = GoalBeingCreated.CalculateNumOfWordsToWritePerDay();
             GoalSummaryString = $"Based on your answers, you should write {wordsToWritePerDay} words per day.";
         }
 
-        private uint CalculateNumOfWordsToWritePerDay()
-        {
-            uint numOfWordsPerDay = 0;
-            if (GoalBeingCreated.TotalWordsPerDay > 0)
-            {
-                var currentDate = DateTimeOffset.UtcNow;
-                TimeSpan timeBetweenNowAndDeadline = GoalBeingCreated.DueDate - currentDate;
-                double totalDaysTillDeadline = timeBetweenNowAndDeadline.TotalDays;
-                if (totalDaysTillDeadline > 0)
-                {
-                    uint roundedUpDaysTillDeadline = 1;
-                    if (totalDaysTillDeadline > 1)
-                    {
-                        roundedUpDaysTillDeadline = (uint)Math.Ceiling(totalDaysTillDeadline);
-                    }
-                    numOfWordsPerDay = GoalBeingCreated.TotalWordsPerDay/ roundedUpDaysTillDeadline;
-                }
-
-            }
-            return numOfWordsPerDay;
-        }
+        
 
         private string _goalSummaryString;
 

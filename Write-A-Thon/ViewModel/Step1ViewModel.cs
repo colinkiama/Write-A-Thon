@@ -11,7 +11,7 @@ using Write_A_Thon.View.GoalSettingViews;
 
 namespace Write_A_Thon.ViewModel
 {
-    class Step1ViewModel : NotifyingViewModel
+    class Step1ViewModel : NotifyingClass
     {
         public RelayCommand NavForwardCommand { get; set; }
 

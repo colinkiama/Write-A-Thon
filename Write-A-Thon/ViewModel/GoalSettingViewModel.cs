@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Write_A_Thon.Commands;
+using Write_A_Thon.Model;
 
 namespace Write_A_Thon.ViewModel
 {
-    class GoalSettingViewModel : NotifyingViewModel
+    class GoalSettingViewModel : NotifyingClass
     {
         private uint _totalWordsToWrite;
 

@@ -10,5 +10,29 @@ namespace Write_A_Thon.Model
     {
         public uint TotalWordsPerDay { get; set; }
         public DateTimeOffset DueDate { get; set; }
+
+
+
+        public uint CalculateNumOfWordsToWritePerDay()
+        {
+            uint numOfWordsPerDay = 0;
+            if (TotalWordsPerDay > 0)
+            {
+                var currentDate = DateTimeOffset.UtcNow;
+                TimeSpan timeBetweenNowAndDeadline = DueDate - currentDate;
+                double totalDaysTillDeadline = timeBetweenNowAndDeadline.TotalDays;
+                if (totalDaysTillDeadline > 0)
+                {
+                    uint roundedUpDaysTillDeadline = 1;
+                    if (totalDaysTillDeadline > 1)
+                    {
+                        roundedUpDaysTillDeadline = (uint)Math.Ceiling(totalDaysTillDeadline);
+                    }
+                    numOfWordsPerDay = TotalWordsPerDay / roundedUpDaysTillDeadline;
+                }
+
+            }
+            return numOfWordsPerDay;
+        }
     }
 }
