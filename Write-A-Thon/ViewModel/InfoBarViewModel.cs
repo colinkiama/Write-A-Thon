@@ -7,7 +7,7 @@ using Write_A_Thon.Model;
 
 namespace Write_A_Thon.ViewModel
 {
-    public class InfoBarViewModel : NotifyingClass
+    public class InfoBarViewModel : NotifyingViewModel
     {
 
         private string _ediorText;

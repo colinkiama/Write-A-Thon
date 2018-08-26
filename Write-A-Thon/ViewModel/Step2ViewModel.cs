@@ -11,7 +11,7 @@ using Write_A_Thon.View.GoalSettingViews;
 
 namespace Write_A_Thon.ViewModel
 {
-    class Step2ViewModel:NotifyingClass
+    class Step2ViewModel:NotifyingViewModel
     {
         private uint _totalWordsToWrite;
         public Goal goalBeingCreated { get; set; }

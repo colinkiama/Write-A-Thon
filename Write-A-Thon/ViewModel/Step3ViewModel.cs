@@ -9,7 +9,7 @@ using Write_A_Thon.Model;
 
 namespace Write_A_Thon.ViewModel
 {
-    class Step3ViewModel: NotifyingClass
+    class Step3ViewModel: NotifyingViewModel
     {
         public RelayCommand NavBackCommand{ get; set; }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Write_A_Thon.Model
 {
-    public abstract class NotifyingClass : INotifyPropertyChanged
+    public abstract class NotifyingViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

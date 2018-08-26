@@ -7,7 +7,7 @@ using Write_A_Thon.Model;
 
 namespace Write_A_Thon.ViewModel
 {
-    public class SettingsViewModel:NotifyingClass
+    public class SettingsViewModel:NotifyingViewModel
     {
 
     }

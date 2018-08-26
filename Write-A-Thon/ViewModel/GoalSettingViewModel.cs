@@ -10,7 +10,7 @@ using Write_A_Thon.Model;
 
 namespace Write_A_Thon.ViewModel
 {
-    class GoalSettingViewModel : NotifyingClass
+    class GoalSettingViewModel : NotifyingViewModel
     {
         private uint _totalWordsToWrite;
 

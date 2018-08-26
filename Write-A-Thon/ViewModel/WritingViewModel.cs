@@ -10,7 +10,7 @@ using Write_A_Thon.Services;
 
 namespace Write_A_Thon.ViewModel
 {
-    public class WritingViewModel : NotifyingClass
+    public class WritingViewModel : NotifyingViewModel
     {
         
     }

@@ -119,7 +119,7 @@
     </Compile>
     <Compile Include="ViewModel\GoalSettingViewModel.cs" />
     <Compile Include="ViewModel\InfoBarViewModel.cs" />
-    <Compile Include="Model\NotifyingClass.cs" />
+    <Compile Include="ViewModel\NotifyingViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\Step1ViewModel.cs" />
     <Compile Include="ViewModel\Step2ViewModel.cs" />
