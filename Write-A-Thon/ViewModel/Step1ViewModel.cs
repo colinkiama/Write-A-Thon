@@ -33,7 +33,7 @@ namespace Write_A_Thon.ViewModel
 
         public Step1ViewModel()
         {
-            SelectedDueDate = DateTimeOffset.UtcNow;
+            SelectedDueDate = MinDate;
             NavForwardCommand = new RelayCommand(NavigateForward, CheckIfValidDateIsEntered);
         }
 
