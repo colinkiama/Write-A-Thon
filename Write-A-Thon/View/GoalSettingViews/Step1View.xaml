@@ -31,7 +31,8 @@
                                         Background="Transparent"
                                         Margin="0,40,0,0"
                                         Name="GoalDatePicker"
-                                       Date="{x:Bind ViewModel.SelectedDueDate, Mode=TwoWay}"/>
+                                        Date="{x:Bind ViewModel.SelectedDueDate, Mode=TwoWay}"
+                                        MinDate="{x:Bind ViewModel.MinDate}"/>
             <Button RelativePanel.AlignBottomWithPanel="True"
                            RelativePanel.AlignHorizontalCenterWithPanel="True"
                             Margin="0,0,0,20"

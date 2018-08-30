@@ -29,8 +29,7 @@ namespace Write_A_Thon.ViewModel
             }
         }
 
-       
-
+        public DateTimeOffset MinDate => DateTimeOffset.UtcNow.AddDays(1);
 
         public Step1ViewModel()
         {
