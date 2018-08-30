@@ -26,5 +26,7 @@ namespace Write_A_Thon.View
         {
             this.InitializeComponent();
         }
+
+        
     }
 }

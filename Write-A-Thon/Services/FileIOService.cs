@@ -27,7 +27,6 @@ namespace Write_A_Thon.Services
             }
         }
         public void RequestToLoadFile() => LoadRequested?.Invoke(this, EventArgs.Empty);
-
         public void RequsetNewFile() => NewFileRequested?.Invoke(this, EventArgs.Empty);
     }
 }

@@ -5,9 +5,13 @@
     xmlns:local="using:Write_A_Thon.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Write_A_Thon.ViewModel"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.DataContext>
+        <vm:SettingsViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
     <Grid Background="{ThemeResource SystemControlChromeMediumAcrylicWindowMediumBrush}"
           Padding="20,8">
         <Grid.RowDefinitions>
@@ -45,10 +49,13 @@
                        FontSize="16"
                        Name="TargetHeader"/>
             <TextBox RelativePanel.Below="TargetHeader"
-                     Text="1500"
+                    Text="{x:Bind ViewModel.Target, Mode=TwoWay}"
                      Width="150"
                      Name="TargetTextBox"
-                     Margin="0,8,0,0"/>
+                     Margin="0,8,0,0"
+                     TextChanged="{x:Bind ViewModel.TextBox_TextChanged}"
+                             extensions:TextBoxRegex.ValidationMode="Dynamic"
+                 extensions:TextBoxRegex.ValidationType="Number"/>
 
             <TextBlock Text="Due Date:" 
                        Margin="0,24,0,0"
@@ -59,11 +66,8 @@
                                 Margin="0,8,0,0"
                                 PlaceholderText="Select a date"
                                 Width="150"
-                                Name="DueDatePicker"/>
-            <Button Name="RedoGoalSettingButton"
-                    RelativePanel.Below="DueDatePicker"
-                    Content="Redo Goal Setting"
-                    Margin="0,24,0,0"/>
+                                Name="DueDatePicker"
+                                Date="{x:Bind ViewModel.SelectedDate,Mode=TwoWay}"/>
         </RelativePanel>
     </Grid>
 </Page>
