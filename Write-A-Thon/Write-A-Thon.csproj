@@ -116,6 +116,7 @@
     <Compile Include="Services\FileIOService.cs" />
     <Compile Include="Services\FileLaunchService.cs" />
     <Compile Include="Services\InfoBarService.cs" />
+    <Compile Include="Services\NavService.cs" />
     <Compile Include="Services\WordCounterService.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
@@ -173,6 +174,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FlowFrame.colinkiama">
+      <Version>0.0.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.7</Version>
     </PackageReference>

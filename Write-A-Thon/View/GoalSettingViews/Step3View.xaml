@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:Write_A_Thon.ViewModel"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     NavigationCacheMode="Required"
     Name="thisPage">
     <Page.DataContext>
@@ -16,7 +15,7 @@
     <Page.Resources>
         <ResourceDictionary Source="ms-appx:///Styles/GoalSettingStyles.xaml"/>
     </Page.Resources>
-    <Grid>
+    <Grid Background="Transparent">
         <RelativePanel Style="{StaticResource PaddedRelativePanel}">
             <TextBlock Text="{x:Bind ViewModel.GoalSummaryString, Mode=OneWay}"
                                Style="{StaticResource TitleTextBlock}"

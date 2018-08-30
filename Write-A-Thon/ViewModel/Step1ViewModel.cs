@@ -7,6 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Write_A_Thon.Commands;
 using Write_A_Thon.Helpers;
 using Write_A_Thon.Model;
+using Write_A_Thon.Services;
 using Write_A_Thon.View.GoalSettingViews;
 
 namespace Write_A_Thon.ViewModel
@@ -44,7 +45,8 @@ namespace Write_A_Thon.ViewModel
         private async void NavigateForward()
         {
             var goalBeingCreated = new Goal { DueDate = SelectedDueDate };
-            await FrameAnimationHelper.Navigate(typeof(Step2View), goalBeingCreated);
+            //await FrameAnimationHelper.Navigate(typeof(Step2View), goalBeingCreated);
+            await NavService.Navigate(typeof(Step2View), goalBeingCreated);
         }
     }
 }

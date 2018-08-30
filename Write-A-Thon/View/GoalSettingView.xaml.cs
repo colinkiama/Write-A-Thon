@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Write_A_Thon.Events;
 using Write_A_Thon.Helpers;
+using Write_A_Thon.Services;
 using Write_A_Thon.View.GoalSettingViews;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -34,7 +35,8 @@ namespace Write_A_Thon.View
             formStepChanged += GoalSettingView_formStepChanged;
             formFinished += GoalSettingView_formFinished;
             FrameAnimationHelper.frame = formFrame;
-            formFrame.Navigate(typeof(Step1View));
+            NavService.frame = formFrame;
+            
 
         }
 
@@ -57,6 +59,12 @@ namespace Write_A_Thon.View
         internal static void RaiseFormFinished()
         {
             formFinished?.Invoke(null, EventArgs.Empty);
+        }
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            await formFrame.Navigate(typeof(Step1View));
         }
     }
 }

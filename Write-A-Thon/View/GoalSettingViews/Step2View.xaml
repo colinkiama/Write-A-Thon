@@ -8,7 +8,6 @@
     xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
     xmlns:vm="using:Write_A_Thon.ViewModel"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     NavigationCacheMode="Required"
     Name="thisPage">
     <Page.DataContext>
@@ -17,7 +16,7 @@
     <Page.Resources>
         <ResourceDictionary Source="ms-appx:///Styles/GoalSettingStyles.xaml"/>
     </Page.Resources>
-    <Grid>
+    <Grid Background="Transparent">
         <RelativePanel Style="{StaticResource PaddedRelativePanel}">
             <TextBlock Text="How many words do you need to write?"
                                Style="{StaticResource TitleTextBlock}"

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Write_A_Thon.Commands;
 using Write_A_Thon.Helpers;
 using Write_A_Thon.Model;
+using Write_A_Thon.Services;
 using Write_A_Thon.View;
 
 namespace Write_A_Thon.ViewModel
@@ -61,7 +62,8 @@ namespace Write_A_Thon.ViewModel
 
         private async void NavigateBack()
         {
-            await FrameAnimationHelper.NavigateBack();
+            //await FrameAnimationHelper.NavigateBack();
+            await NavService.GoBack();
         }
     }
 }

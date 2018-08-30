@@ -5,6 +5,7 @@
     xmlns:local="using:Write_A_Thon.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ff="using:Flow_Frame"
     xmlns:converters="using:Write_A_Thon.Converters"
     
     mc:Ignorable="d"
@@ -57,7 +58,7 @@
                            Name="StepProgressTextBlock"/>
             </Grid>
         </RelativePanel>
-        <Frame Grid.Row="1" Name="formFrame"/>
+        <ff:FlowFrame Grid.Row="1" Name="formFrame"/>
         <!--<FlipView Grid.Row="1" Background="Transparent" Name="GoalSettingFlipView"
                   Margin="0,20,0,0"
                   Padding="12,-72,12,0"
