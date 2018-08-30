@@ -67,10 +67,17 @@ namespace Write_A_Thon.ViewModel
 
         public InfoBarViewModel()
         {
-            _infoBarService = App.InfoBarService;
             _wordCounterService = App.WordCounterService;
             _wordCounterService.WordCountChanged += _wordCounterService_WordCountChanged;
-            Target = _infoBarService.GetWordsRequiredPerDay();
+            _infoBarService = App.InfoBarService;
+            _infoBarService.TargetChanged += _infoBarService_TargetChanged;
+            
+            Target = _infoBarService.Target;
+        }
+
+        private void _infoBarService_TargetChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void _wordCounterService_WordCountChanged(object sender, EventArgs e)

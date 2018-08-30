@@ -8,23 +8,43 @@ using Write_A_Thon.Model;
 
 namespace Write_A_Thon.Services
 {
-   public class InfoBarService
+    public class InfoBarService
     {
-        public GoalProgress GoalProgress { get; set; }
+        public event EventHandler TargetChanged;
+        public event EventHandler TargetTrackedChanged;
 
-        public InfoBarService(GoalProgress goalProgress)
+        private bool _isTargetTracked;
+
+        public bool IsTargetTracked
         {
-            GoalProgress = goalProgress;
+            get { return _isTargetTracked; }
+            set
+            {
+                _isTargetTracked = value;
+                RaiseTargetTrackedChanged();
+            }
         }
 
-        public uint GetWordsRequiredPerDay()
+        private void RaiseTargetTrackedChanged()
         {
-            return GoalProgress.WordsToWritePerDay;
+            throw new NotImplementedException();
         }
 
-        public uint GetGoalTarget()
+        private uint _target;
+
+        public uint Target
         {
-            return GoalProgress.TotalWordsToWrite;
+            get { return _target; }
+            set
+            {
+                _target = value;
+                RaiseTargetChanged();
+            }
+        }
+
+        private void RaiseTargetChanged()
+        {
+            TargetChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
