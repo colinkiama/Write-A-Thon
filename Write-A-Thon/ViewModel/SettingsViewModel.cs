@@ -33,8 +33,15 @@ namespace Write_A_Thon.ViewModel
         public DateTimeOffset SelectedDate
         {
             get { return _selectedDate; }
-            set { _selectedDate = value; }
+            set
+            {
+                _selectedDate = value;
+                NotifyPropertyChanged();
+            }
         }
+
+        public DateTimeOffset MinDate => DateTimeOffset.UtcNow.AddDays(1);
+
 
         private uint _target;
 
@@ -67,12 +74,14 @@ namespace Write_A_Thon.ViewModel
             if (parsed)
             {
                 Target = result;
+                App.InfoBarService.GoalProgress.TotalWordsToWrite = Target;
             }
+
         }
 
         public void TargetReminderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Record changes
+            // Set changes to notifications
         }
     }
 }

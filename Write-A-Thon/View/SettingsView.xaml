@@ -38,7 +38,8 @@
                       Name="TargetReminderComboBox"
                       SelectionChanged="{x:Bind ViewModel.TargetReminderComboBox_SelectionChanged}"
                       ItemsSource="{x:Bind ViewModel.TargetReminderTimes}"
-                      SelectedIndex="{x:Bind ViewModel.SelectedReminderIndex,Mode=OneWay}">
+                      SelectedIndex="{x:Bind ViewModel.SelectedReminderIndex,Mode=OneWay}"
+                      >
                
                    
             </ComboBox>
@@ -66,7 +67,8 @@
                                 PlaceholderText="Select a date"
                                 Width="150"
                                 Name="DueDatePicker"
-                                Date="{x:Bind ViewModel.SelectedDate,Mode=TwoWay}"/>
+                                Date="{x:Bind ViewModel.SelectedDate,Mode=TwoWay}"
+                                MinDate="{x:Bind ViewModel.MinDate}"/>
         </RelativePanel>
     </Grid>
 </Page>
