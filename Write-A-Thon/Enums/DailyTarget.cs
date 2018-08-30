@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Write_A_Thon.Enums
 {
-    public enum ShortcutType
-    { 
-        NewFile,
-        OpenFile,
-        SaveFile,
-        ShowPreview,
-        Help
+    public enum DailyTarget
+    {
+        T15Minutes = 15,
+        T30Minutes = 30,
+        T1Hour = 60,
+        T2Hours = 120,
+        T4Hours = 240
     }
-
 }

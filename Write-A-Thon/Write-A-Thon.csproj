@@ -99,6 +99,7 @@
     <Compile Include="Commands\RelayCommandWithParameters.cs" />
     <Compile Include="Converters\IndexToStepsConverter.cs" />
     <Compile Include="Converters\PercentageConverter.cs" />
+    <Compile Include="Enums\DailyTarget.cs" />
     <Compile Include="Enums\ShortcutType.cs" />
     <Compile Include="Events\FileIOEvent.cs" />
     <Compile Include="Events\FormEvent.cs" />

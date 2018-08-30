@@ -27,6 +27,11 @@ namespace Write_A_Thon.View
             this.InitializeComponent();
         }
 
-        
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+        }
+
+
     }
 }
