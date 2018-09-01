@@ -26,49 +26,6 @@
                    Margin="0,32,0,0"/>
         <RelativePanel Grid.Row="1"
                        Margin="0,32,0,0">
-            
-            <TextBlock Text="Daily Target Reminder:"
-                       FontWeight="SemiBold"
-                       Name="DailyTargetTitle"
-                       FontSize="16"/>
-            <ComboBox RelativePanel.Below="DailyTargetTitle" 
-                      Width="150"
-                      Header="Every:"
-                      Margin="0,8,0,0"
-                      Name="TargetReminderComboBox"
-                      SelectionChanged="{x:Bind ViewModel.TargetReminderComboBox_SelectionChanged}"
-                      ItemsSource="{x:Bind ViewModel.TargetReminderTimes}"
-                      SelectedIndex="{x:Bind ViewModel.SelectedReminderIndex,Mode=OneWay}"
-                      >
-               
-                   
-            </ComboBox>
-            <TextBlock Text="Target:" Margin="0,24,0,0"
-                       RelativePanel.Below="TargetReminderComboBox"
-                       FontWeight="SemiBold"
-                       FontSize="16"
-                       Name="TargetHeader"/>
-            <TextBox RelativePanel.Below="TargetHeader"
-                    Text="{x:Bind ViewModel.Target, Mode=TwoWay}"
-                     Width="150"
-                     Name="TargetTextBox"
-                     Margin="0,8,0,0"
-                     TextChanged="{x:Bind ViewModel.TextBox_TextChanged}"
-                             extensions:TextBoxRegex.ValidationMode="Dynamic"
-                 extensions:TextBoxRegex.ValidationType="Number"/>
-
-            <TextBlock Text="Due Date:" 
-                       Margin="0,24,0,0"
-                       RelativePanel.Below="TargetTextBox"
-                       FontWeight="SemiBold"
-                       Name="DueDateHeader"/>
-            <CalendarDatePicker RelativePanel.Below="DueDateHeader"
-                                Margin="0,8,0,0"
-                                PlaceholderText="Select a date"
-                                Width="150"
-                                Name="DueDatePicker"
-                                Date="{x:Bind ViewModel.SelectedDate,Mode=TwoWay}"
-                                MinDate="{x:Bind ViewModel.MinDate}"/>
         </RelativePanel>
     </Grid>
 </Page>

@@ -11,21 +11,6 @@ namespace Write_A_Thon.ViewModel
     public class InfoBarViewModel : NotifyingViewModel
     {
         private WordCounterService _wordCounterService;
-        private InfoBarService _infoBarService;
-
-        private uint _target;
-
-        public uint Target
-        {
-            get { return _target; }
-            set
-            {
-                _target = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-
 
         private uint _wordCount;
 
@@ -36,48 +21,33 @@ namespace Write_A_Thon.ViewModel
             {
                 _wordCount = value;
                 NotifyPropertyChanged();
-                UpdateProgress();
+                UpdateReadingTime();
             }
         }
 
-        private void UpdateProgress()
+        private void UpdateReadingTime()
         {
-            double wordCount = WordCount;
-            double target = Target;
-            uint Percentage = (uint)(wordCount / target * 100);
-            Progress = CheckIfPercentageIsTooHigh(Percentage) ? 100 : Percentage;
+            ReadingTime = WordCount / 250;
         }
 
-        private bool CheckIfPercentageIsTooHigh(uint percentage)
-        {
-            return percentage > 100;
-        }
+        private uint _readingTime;
 
-        private uint _progress;
-
-        public uint Progress
+        public uint ReadingTime
         {
-            get { return _progress; }
-            set
+            get { return _readingTime; }
+            private set
             {
-                _progress = value;
+                _readingTime = value;
                 NotifyPropertyChanged();
             }
         }
+
+
 
         public InfoBarViewModel()
         {
             _wordCounterService = App.WordCounterService;
             _wordCounterService.WordCountChanged += _wordCounterService_WordCountChanged;
-            _infoBarService = App.InfoBarService;
-            _infoBarService.TargetChanged += _infoBarService_TargetChanged;
-            
-            Target = _infoBarService.Target;
-        }
-
-        private void _infoBarService_TargetChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void _wordCounterService_WordCountChanged(object sender, EventArgs e)

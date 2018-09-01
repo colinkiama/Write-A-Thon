@@ -13,7 +13,7 @@
     </Page.DataContext>
 
     <Page.Resources>
-        <Converters:PercentageConverter x:Name="PercentageConverter"/>
+        <Converters:UIntMinutesFormattingConverter x:Name="MinFormatter"/>
     </Page.Resources>
     <Grid Background="{ThemeResource SystemControlAccentDark2AcrylicWindowAccentDark2MediumHighBrush}">
         <Grid.Resources>
@@ -37,13 +37,10 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Target: " Margin="0,0,4,0"/>
-                <TextBlock Name="TargetTextBlock" Text="{x:Bind ViewModel.Target, Mode=OneWay}"/>
+                <TextBlock Name="ReadingTimeTextBlock" Text="{x:Bind ViewModel.ReadingTime, Mode=OneWay, Converter={StaticResource MinFormatter}}"
+                           Foreground="#CCCCCC"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Progress: " Margin="0,0,4,0"/>
-                <TextBlock Name="ProgressTextBlock" Text="{x:Bind ViewModel.Progress, Mode=OneWay, Converter={StaticResource PercentageConverter}}"/>
-            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Page>

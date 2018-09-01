@@ -56,21 +56,27 @@ namespace Write_A_Thon.View
 
         private async void FileIOService_NewFileRequested(object sender, EventArgs e)
         {
+            await CreateNewFile();
+        }
+
+        private async Task<bool> CreateNewFile()
+        {
+            bool newFileCreated = false;
             if (loadedFile == null || unsavedWork)
             {
                 bool userProceeded = await AskIfUserWantsToSave();
                 if (userProceeded)
                 {
                     ClearWritingView();
+                    newFileCreated = true;
                 }
             }
             else
             {
                 ClearWritingView();
+                newFileCreated = true;
             }
-            
-
-           
+            return newFileCreated;
         }
 
         private async Task<bool> AskIfUserWantsToSave()
@@ -85,7 +91,7 @@ namespace Write_A_Thon.View
 
                 if (result == ContentDialogResult.Primary)
                 {
-                    FileIOService_SaveRequested(null, EventArgs.Empty);
+                    await SaveFile();
                 }
 
             }
@@ -104,6 +110,12 @@ namespace Write_A_Thon.View
 
         private async void FileIOService_SaveRequested(object sender, EventArgs e)
         {
+            await SaveFile();
+
+        }
+
+        private async Task SaveFile()
+        {
             if (loadedFile == null)
             {
                 await fileIOHelper.SaveFileAsync(GetRichEditBoxContent());
@@ -114,7 +126,6 @@ namespace Write_A_Thon.View
             }
         }
 
-
         private async void FileIOService_SaveAsRequested(object sender, EventArgs e)
         {
             await fileIOHelper.SaveFileAsync(GetRichEditBoxContent());
@@ -122,49 +133,21 @@ namespace Write_A_Thon.View
 
         private async void FileIOService_LoadRequested(object sender, EventArgs e)
         {
-            string richEditBoxContent = GetRichEditBoxContent();
-            if (loadedFile != null)
+            bool newFileCreated = await CreateNewFile();
+            if (newFileCreated)
             {
-                if (CheckIfSavedContentHasChanged() == true)
-                {
-                    var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
-                    if (result != ContentDialogResult.None)
-                    {
-                        if (result == ContentDialogResult.Primary)
-                        {
-                            await fileIOHelper.SaveFileAsync(richEditBoxContent, loadedFile, true);
-                        }
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-
+                await LoadFile();
             }
+        }
 
-            else
+        private async Task LoadFile()
+        {
+            loadedFile = await fileIOHelper.LoadFileAsync();
+            string fileContent = await fileIOHelper.GetContentFromFileAsync();
+            if (fileContent != null)
             {
-                var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
-                if (result != ContentDialogResult.None)
-                {
-                    if (result == ContentDialogResult.Primary)
-                    {
-                        await fileIOHelper.SaveFileAsync(richEditBoxContent, true);
-                    }
-                }
-                
-            }
-
-
-            StorageFile fileToLoad = await fileIOHelper.LoadFileAsync();
-
-            if (fileToLoad != null)
-            {
-                string fileContent = await fileIOHelper.GetContentFromFileAsync(fileToLoad);
-                lastSavedContent = fileContent;
                 SetRichEditBoxContent(fileContent);
-                loadedFile = fileToLoad;
+
             }
         }
 

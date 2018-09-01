@@ -11,77 +11,7 @@ namespace Write_A_Thon.ViewModel
 {
     public class SettingsViewModel : NotifyingViewModel
     {
-        private int _selectedReminderIndex;
-
-        public int SelectedReminderIndex
-        {
-            get { return _selectedReminderIndex; }
-            set { _selectedReminderIndex = value; }
-        }
-
-        public List<string> TargetReminderTimes = new List<string>()
-        {
-           "15 Minutes",
-           "30 Minutes",
-           "1 Hour",
-           "2 Hours",
-           "4 Hours"
-        };
-
-        private DateTimeOffset _selectedDate;
-
-        public DateTimeOffset SelectedDate
-        {
-            get { return _selectedDate; }
-            set
-            {
-                _selectedDate = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public DateTimeOffset MinDate => DateTimeOffset.UtcNow.AddDays(1);
-
-
-        private uint _target;
-
-        public uint Target
-        {
-            get { return _target; }
-            set
-            {
-                _target = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public SettingsViewModel()
-        {
-            SelectedDate = App.InfoBarService.GoalProgress.DueDate;
-            Target = App.InfoBarService.GoalProgress.TotalWordsToWrite;
-            SelectedReminderIndex = 0;
-        }
-
-        public void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var txtBox = (TextBox)sender;
-            if (txtBox.Text == string.Empty)
-            {
-                txtBox.Text = "0";
-                txtBox.SelectAll();
-            }
-            bool parsed = uint.TryParse(txtBox.Text, out uint result);
-            if (parsed)
-            {
-                Target = result;
-                App.InfoBarService.GoalProgress.TotalWordsToWrite = Target;
-            }
-
-        }
-
-        public void TargetReminderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Set changes to notifications
-        }
+     
+       
     }
 }
