@@ -28,7 +28,6 @@ namespace Write_A_Thon
 
     public sealed partial class Shell : Page
     {
-
         const string newFileString = "New File";
         const string saveString = "Save";
         const string saveAsString = "Save As...";

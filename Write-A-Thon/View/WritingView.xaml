@@ -69,7 +69,7 @@
                 </Button>
             </StackPanel>
         </controls:DropShadowPanel>
-        <TextBlock Text="Hello" Grid.Row="1"
+        <TextBlock Text="Untitled" Grid.Row="1"
                    HorizontalAlignment="Center"
                    FontWeight="SemiBold"
                    Foreground="{ThemeResource SystemControlForegroundAccentBrush}"

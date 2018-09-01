@@ -30,13 +30,38 @@ namespace Write_A_Thon.View
 
         public StorageFile loadedFile;
         public bool fileSaved;
-        public bool unsavedWork;
-        string lastSavedContent;
         FileIOHelper fileIOHelper = new FileIOHelper();
+
+        private bool _unsavedWork;
+
+        public bool UnsavedWork
+        {
+            get { return _unsavedWork; }
+            set
+            {
+                _unsavedWork = value;
+                UpdateFileTitleUnsavedStatus();
+            }
+        }
+
+        private void UpdateFileTitleUnsavedStatus()
+        {
+            if (UnsavedWork)
+            {
+                CurrentFileTitleTextBlock.Text += "*";
+            }
+            else
+            {
+                string currentTitle = CurrentFileTitleTextBlock.Text;
+                CurrentFileTitleTextBlock.Text = currentTitle.Remove(currentTitle.Length - 1);
+            }
+        }
 
         public WritingView()
         {
             this.InitializeComponent();
+            UnsavedWork = true;
+
             App.fileIOService.NewFileRequested += FileIOService_NewFileRequested;
             App.fileIOService.SaveRequested += FileIOService_SaveRequested;
             App.fileIOService.SaveAsRequested += FileIOService_SaveAsRequested;
@@ -47,6 +72,8 @@ namespace Write_A_Thon.View
             if (FileLaunchService.wasFileLaunched)
             {
                 (EditorText, loadedFile) = App.fileLaunchService.GetLaunchFileData();
+                SetCurrentFileTitle(loadedFile.DisplayName);
+                UnsavedWork = false;
             }
             else
             {
@@ -73,7 +100,7 @@ namespace Write_A_Thon.View
         private async Task<bool> CreateNewFile()
         {
             bool newFileCreated = false;
-            if (loadedFile == null || unsavedWork)
+            if (loadedFile == null || UnsavedWork)
             {
                 bool userProceeded = await AskIfUserWantsToSave();
                 if (userProceeded)
@@ -116,7 +143,7 @@ namespace Write_A_Thon.View
             SetRichEditBoxContent(string.Empty);
             loadedFile = null;
             fileSaved = false;
-            unsavedWork = false;
+            UnsavedWork = false;
             SetCurrentFileTitle(string.Empty);
         }
 
@@ -175,15 +202,7 @@ namespace Write_A_Thon.View
             }
         }
 
-        private bool CheckIfSavedContentHasChanged()
-        {
-            bool contentHasChanged = false;
-            if (lastSavedContent != null)
-            {
-                contentHasChanged = lastSavedContent.Equals(GetRichEditBoxContent());
-            }
-            return contentHasChanged;
-        }
+    
 
         private void SetRichEditBoxContent(string editorText)
         {

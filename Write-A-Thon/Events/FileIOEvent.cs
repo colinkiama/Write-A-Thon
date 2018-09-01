@@ -13,17 +13,12 @@ namespace Write_A_Thon.Events
     {
         public FileIOEventArgs(bool operationSuccessful)
         {
-            _operationSuccessful = operationSuccessful;
+            OperationSuccessful = operationSuccessful;
         }
 
-        private bool _operationSuccessful;
+        public bool OperationSuccessful { get; }
 
-        public bool OperationSuccessful
-        {
-            get { return _operationSuccessful; }
-        }
 
-        
 
 
     }
