@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -55,24 +56,42 @@ namespace Write_A_Thon.View
 
         private async void FileIOService_NewFileRequested(object sender, EventArgs e)
         {
-            if (unsavedWork)
+            if (loadedFile == null || unsavedWork)
             {
-                var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
-                if (result != ContentDialogResult.None)
+                bool userProceeded = await AskIfUserWantsToSave();
+                if (userProceeded)
                 {
-                    if (result == ContentDialogResult.Primary)
-                    {
-                        await fileIOHelper.SaveFileAsync(GetRichEditBoxContent(), true);
-                    }
-
                     ClearWritingView();
                 }
-
             }
             else
             {
                 ClearWritingView();
             }
+            
+
+           
+        }
+
+        private async Task<bool> AskIfUserWantsToSave()
+        {
+            bool willProceed = false;
+
+            var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
+
+            if (result != ContentDialogResult.None)
+            {
+                willProceed = true;
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    FileIOService_SaveRequested(null, EventArgs.Empty);
+                }
+
+            }
+
+            return willProceed;
+
         }
 
         private void ClearWritingView()
@@ -81,20 +100,20 @@ namespace Write_A_Thon.View
             loadedFile = null;
             fileSaved = false;
             unsavedWork = false;
-
         }
 
         private async void FileIOService_SaveRequested(object sender, EventArgs e)
         {
             if (loadedFile == null)
             {
-
+                await fileIOHelper.SaveFileAsync(GetRichEditBoxContent());
             }
             else
             {
-
+                await fileIOHelper.SaveFileAsync(GetRichEditBoxContent(), loadedFile);
             }
         }
+
 
         private async void FileIOService_SaveAsRequested(object sender, EventArgs e)
         {
