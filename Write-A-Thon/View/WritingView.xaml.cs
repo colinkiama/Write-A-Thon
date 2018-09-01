@@ -29,7 +29,7 @@ namespace Write_A_Thon.View
 
         public StorageFile loadedFile;
         public bool fileSaved;
-        public bool fileNeedsToSave;
+        public bool unsavedWork;
         string lastSavedContent;
         FileIOHelper fileIOHelper = new FileIOHelper();
 
@@ -55,7 +55,7 @@ namespace Write_A_Thon.View
 
         private async void FileIOService_NewFileRequested(object sender, EventArgs e)
         {
-            if (fileNeedsToSave)
+            if (unsavedWork)
             {
                 var result = await DialogHelper.ShowSaveUnsavedWorkDialog();
                 if (result != ContentDialogResult.None)
@@ -80,7 +80,7 @@ namespace Write_A_Thon.View
             SetRichEditBoxContent(string.Empty);
             loadedFile = null;
             fileSaved = false;
-            fileNeedsToSave = false;
+            unsavedWork = false;
 
         }
 
@@ -88,11 +88,11 @@ namespace Write_A_Thon.View
         {
             if (loadedFile == null)
             {
-                FileIOService_SaveAsRequested(null, EventArgs.Empty);
+
             }
             else
             {
-                fileNeedsToSave = !await fileIOHelper.SaveFileAsync(GetRichEditBoxContent(), loadedFile);
+
             }
         }
 
