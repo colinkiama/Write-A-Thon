@@ -146,9 +146,10 @@ namespace Write_A_Thon.Helpers
                 Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary
             };
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".md" });
+            savePicker.FileTypeChoices.Add("Rich Text Format (Use this to keep formatting)", new List<string>(){ ".rtf"});
+            savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt"});
             // Default file name if the user does not type one in or select a file to replace
-            savePicker.SuggestedFileName = "New Document";
+            savePicker.SuggestedFileName = "Untitled";
 
             Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
 

@@ -28,8 +28,8 @@ namespace Write_A_Thon.View
     public sealed partial class WritingView : Page
     {
 
-        public StorageFile loadedFile;
-        public bool fileSaved;
+        StorageFile loadedFile;
+        bool textLoadedIn;
         FileIOHelper fileIOHelper = new FileIOHelper();
 
         private bool _unsavedWork;
@@ -48,12 +48,20 @@ namespace Write_A_Thon.View
         {
             if (UnsavedWork)
             {
-                CurrentFileTitleTextBlock.Text += "*";
+                if (!CurrentFileTitleTextBlock.Text.Last().Equals('*'))
+                {
+                    CurrentFileTitleTextBlock.Text += "*";
+
+                }
             }
             else
             {
-                string currentTitle = CurrentFileTitleTextBlock.Text;
-                CurrentFileTitleTextBlock.Text = currentTitle.Remove(currentTitle.Length - 1);
+                if (CurrentFileTitleTextBlock.Text.Last().Equals('*'))
+                {
+                    string currentTitle = CurrentFileTitleTextBlock.Text;
+                    CurrentFileTitleTextBlock.Text = currentTitle.Remove(currentTitle.Length - 1);
+                }
+                
             }
         }
 
@@ -142,7 +150,6 @@ namespace Write_A_Thon.View
         {
             SetRichEditBoxContent(string.Empty);
             loadedFile = null;
-            fileSaved = false;
             UnsavedWork = false;
             SetCurrentFileTitle(string.Empty);
         }
@@ -202,10 +209,11 @@ namespace Write_A_Thon.View
             }
         }
 
-    
+
 
         private void SetRichEditBoxContent(string editorText)
         {
+            textLoadedIn = true;
             WritingRichEditBox.Document.SetText(TextSetOptions.FormatRtf, editorText);
         }
 
@@ -218,6 +226,11 @@ namespace Write_A_Thon.View
 
         private void WritingRichEditBox_TextChanged(object sender, RoutedEventArgs e)
         {
+            if (!textLoadedIn)
+            {
+                UnsavedWork = true;
+            }
+            textLoadedIn = false;
             var reb = (RichEditBox)sender;
             reb.Document.GetText(TextGetOptions.NoHidden, out string rebContent);
             WordCounterService.CalculateWordCount(rebContent);
