@@ -34,7 +34,7 @@ namespace Write_A_Thon.View
 
         private bool _unsavedWork;
 
-        public bool UnsavedWork
+        private bool UnsavedWork
         {
             get { return _unsavedWork; }
             set
@@ -61,7 +61,7 @@ namespace Write_A_Thon.View
                     string currentTitle = CurrentFileTitleTextBlock.Text;
                     CurrentFileTitleTextBlock.Text = currentTitle.Remove(currentTitle.Length - 1);
                 }
-                
+
             }
         }
 
@@ -201,11 +201,14 @@ namespace Write_A_Thon.View
         private async Task LoadFile()
         {
             loadedFile = await fileIOHelper.LoadFileAsync();
-            SetCurrentFileTitle(loadedFile.DisplayName);
-            string fileContent = await fileIOHelper.GetContentFromFileAsync(loadedFile);
-            if (fileContent != null)
+            if (loadedFile != null)
             {
-                SetRichEditBoxContent(fileContent);
+                SetCurrentFileTitle(loadedFile.DisplayName);
+                string fileContent = await fileIOHelper.GetContentFromFileAsync(loadedFile);
+                if (fileContent != null)
+                {
+                    SetRichEditBoxContent(fileContent);
+                }
             }
         }
 
