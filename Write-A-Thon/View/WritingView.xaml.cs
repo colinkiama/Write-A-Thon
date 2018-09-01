@@ -223,6 +223,7 @@ namespace Write_A_Thon.View
 
         private string GetRichEditBoxContent()
         {
+            //WritingRichEditBox.Document.GetText(TextGetOptions.FormatRtf, out string contentToReturn);
             WritingRichEditBox.Document.GetText(TextGetOptions.FormatRtf, out string contentToReturn);
             return contentToReturn;
         }
@@ -235,7 +236,7 @@ namespace Write_A_Thon.View
             }
             textLoadedIn = false;
             var reb = (RichEditBox)sender;
-            reb.Document.GetText(TextGetOptions.NoHidden, out string rebContent);
+            reb.Document.GetText(TextGetOptions.None, out string rebContent);
             WordCounterService.CalculateWordCount(rebContent);
         }
     }
