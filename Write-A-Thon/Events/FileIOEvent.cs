@@ -11,10 +11,9 @@ namespace Write_A_Thon.Events
 
     public class FileIOEventArgs : EventArgs
     {
-        public FileIOEventArgs(bool operationSuccessful, bool willSelectNewFile)
+        public FileIOEventArgs(bool operationSuccessful)
         {
             _operationSuccessful = operationSuccessful;
-            _willSelectNewFile = willSelectNewFile;
         }
 
         private bool _operationSuccessful;
@@ -24,12 +23,7 @@ namespace Write_A_Thon.Events
             get { return _operationSuccessful; }
         }
 
-        private bool _willSelectNewFile;
-
-        public bool WillSelectNewFile
-        {
-            get { return _willSelectNewFile; }
-        }
+        
 
 
     }

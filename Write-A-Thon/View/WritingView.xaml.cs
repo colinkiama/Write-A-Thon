@@ -41,6 +41,8 @@ namespace Write_A_Thon.View
             App.fileIOService.SaveRequested += FileIOService_SaveRequested;
             App.fileIOService.SaveAsRequested += FileIOService_SaveAsRequested;
             App.fileIOService.LoadRequested += FileIOService_LoadRequested;
+            fileIOHelper.RaiseFileIOEvent += FileIOHelper_RaiseFileIOEvent;
+
             string EditorText = "";
             if (FileLaunchService.wasFileLaunched)
             {
@@ -52,6 +54,15 @@ namespace Write_A_Thon.View
             }
 
             SetRichEditBoxContent(EditorText);
+        }
+
+        private void FileIOHelper_RaiseFileIOEvent(object sender, Events.FileIOEventArgs args)
+        {
+            if (args.OperationSuccessful)
+            {
+                loadedFile = fileIOHelper.fileFromLastOperation;
+                SetCurrentFileTitle(loadedFile.DisplayName);
+            }
         }
 
         private async void FileIOService_NewFileRequested(object sender, EventArgs e)
@@ -106,6 +117,19 @@ namespace Write_A_Thon.View
             loadedFile = null;
             fileSaved = false;
             unsavedWork = false;
+            SetCurrentFileTitle(string.Empty);
+        }
+
+        private void SetCurrentFileTitle(string title)
+        {
+            if (title.Equals(string.Empty))
+            {
+                CurrentFileTitleTextBlock.Text = "Untitled";
+            }
+            else
+            {
+                CurrentFileTitleTextBlock.Text = title;
+            }
         }
 
         private async void FileIOService_SaveRequested(object sender, EventArgs e)
@@ -143,11 +167,11 @@ namespace Write_A_Thon.View
         private async Task LoadFile()
         {
             loadedFile = await fileIOHelper.LoadFileAsync();
-            string fileContent = await fileIOHelper.GetContentFromFileAsync();
+            SetCurrentFileTitle(loadedFile.DisplayName);
+            string fileContent = await fileIOHelper.GetContentFromFileAsync(loadedFile);
             if (fileContent != null)
             {
                 SetRichEditBoxContent(fileContent);
-
             }
         }
 

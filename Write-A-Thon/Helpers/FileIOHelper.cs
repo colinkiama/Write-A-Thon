@@ -72,7 +72,7 @@ namespace Write_A_Thon.Helpers
         }
 
 
-        public async Task<bool> SaveFileAsync(string fileContent, bool willChangeToNewFile = false)
+        public async Task<bool> SaveFileAsync(string fileContent)
         {
             bool isFileSaved = false;
             StorageFile saveFile = await CreateSaveFileFromPicker();
@@ -88,10 +88,8 @@ namespace Write_A_Thon.Helpers
                         await outputStream.FlushAsync();
                         Debug.WriteLine("File Saved");
                         isFileSaved = true;
-                        if (!willChangeToNewFile)
-                        {
-                            fileFromLastOperation = saveFile;
-                        }
+                        fileFromLastOperation = saveFile;
+
                     }
                 }
                 stream.Dispose(); // Or use the stream variable (see previous code snippet) with a using statement as well.
@@ -100,13 +98,13 @@ namespace Write_A_Thon.Helpers
             {
                 Debug.WriteLine("File not found");
             }
-            OnRaiseFileIOEvent(isFileSaved, willChangeToNewFile);
+            OnRaiseFileIOEvent(isFileSaved);
             return isFileSaved;
         }
 
-        private void OnRaiseFileIOEvent(bool isFileSaved, bool willChangeToNewFile)
+        private void OnRaiseFileIOEvent(bool isFileSaved)
         {
-            RaiseFileIOEvent?.Invoke(this, new FileIOEventArgs(isFileSaved, willChangeToNewFile));
+            RaiseFileIOEvent?.Invoke(this, new FileIOEventArgs(isFileSaved));
         }
 
         public async Task<bool> SaveFileAsync(string fileContent, StorageFile fileToSave, bool willChangeToNewFile = false)
@@ -136,7 +134,7 @@ namespace Write_A_Thon.Helpers
             {
                 Debug.WriteLine("File not found");
             }
-            OnRaiseFileIOEvent(isFileSaved, willChangeToNewFile);
+            OnRaiseFileIOEvent(isFileSaved);
             return isFileSaved;
         }
 

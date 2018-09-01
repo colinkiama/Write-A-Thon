@@ -18,7 +18,8 @@
         <TextBlock Text="Write-A-Thon"
                    FontSize="12"
                    Padding="12,9"
-                   Canvas.ZIndex="20"/>
+                   Canvas.ZIndex="20"
+                   Name="TitleBarTitleTextBlock"/>
         <ToggleButton Name="MenuButton"
                 VerticalAlignment="Top"
                 Padding="15"
@@ -68,6 +69,7 @@
                 VerticalAlignment="Top"
                 Click="SettingsButton_Click"
                 Canvas.ZIndex="20"
+                      Visibility="Collapsed"
                       Grid.RowSpan="2"
                       IsThreeState="False"
                       Style="{ThemeResource BetterToggleButtonRevealStyle}"
@@ -99,28 +101,7 @@
             <Frame Name="InfoBarFrame" Grid.Row="1"
               Grid.ColumnSpan="2" />
 
-            <!--<ToggleButton Name="SettingsButton"
-                Padding="15"
-                Background="Transparent"
-                BorderThickness="0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Click="SettingsButton_Click"
-                Canvas.ZIndex="20"
-                      IsThreeState="False"
-                      Style="{ThemeResource BetterToggleButtonRevealStyle}"
-                          Grid.ColumnSpan="2">
-                <ToggleButton.Content>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE115;" />
-                </ToggleButton.Content>
-            </ToggleButton>
-            <Frame Name="SettingsFrame" 
-               Width="300"
-               HorizontalAlignment="Right"
-               Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Grid.RowSpan="1"
-               Loaded="SettingsFrame_Loaded"/>-->
+            
         </Grid>
     </Grid>
 </Page>
