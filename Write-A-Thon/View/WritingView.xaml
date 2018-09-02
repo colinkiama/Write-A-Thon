@@ -29,7 +29,8 @@
                         Height="48"
                         Name="BoldButton"
                         ToolTipService.ToolTip="Bold (CTRL+B)"
-                        Style="{ThemeResource ButtonRevealStyle}">
+                        Style="{ThemeResource ButtonRevealStyle}"
+                        Click="BoldButton_Click">
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19B;" />
                     </Button.Content>
@@ -45,7 +46,8 @@
                     Style="{ThemeResource ButtonRevealStyle}"
                     Name="ItalicButton"
                     ToolTipService.ToolTip="Italic (CTRL+I)"
-                    contract6Present:KeyboardAcceleratorPlacementMode="Auto">
+                    contract6Present:KeyboardAcceleratorPlacementMode="Auto"
+                    Click="ItalicButton_Click">
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE199;" />
                     </Button.Content>
@@ -58,7 +60,8 @@
                         Height="48"
                          Style="{ThemeResource ButtonRevealStyle}"
                         Name="UnderlineButton"
-                        ToolTipService.ToolTip="Underline (CTRL+U)">
+                        ToolTipService.ToolTip="Underline (CTRL+U)"
+                        Click="UnderlineButton_Click">
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19A;" />
                     </Button.Content>

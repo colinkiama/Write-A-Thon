@@ -239,5 +239,49 @@ namespace Write_A_Thon.View
             reb.Document.GetText(TextGetOptions.None, out string rebContent);
             WordCounterService.CalculateWordCount(rebContent);
         }
+
+        private void BoldButton_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.UI.Text.ITextSelection selectedText = WritingRichEditBox.Document.Selection;
+            if (selectedText != null)
+            {
+                Windows.UI.Text.ITextCharacterFormat charFormatting = selectedText.CharacterFormat;
+                charFormatting.Bold = Windows.UI.Text.FormatEffect.Toggle;
+                selectedText.CharacterFormat = charFormatting;
+            }
+
+        }
+
+        private void ItalicButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            Windows.UI.Text.ITextSelection selectedText = WritingRichEditBox.Document.Selection;
+            if (selectedText != null)
+            {
+                Windows.UI.Text.ITextCharacterFormat charFormatting = selectedText.CharacterFormat;
+                charFormatting.Italic = Windows.UI.Text.FormatEffect.Toggle;
+                selectedText.CharacterFormat = charFormatting;
+            }
+
+        }
+
+        private void UnderlineButton_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.UI.Text.ITextSelection selectedText = WritingRichEditBox.Document.Selection;
+            if (selectedText != null)
+            {
+                Windows.UI.Text.ITextCharacterFormat charFormatting = selectedText.CharacterFormat;
+                if (charFormatting.Underline == Windows.UI.Text.UnderlineType.None)
+                {
+                    charFormatting.Underline = Windows.UI.Text.UnderlineType.Single;
+                }
+                else
+                {
+                    charFormatting.Underline = Windows.UI.Text.UnderlineType.None;
+                }
+                selectedText.CharacterFormat = charFormatting;
+            }
+
+        }
     }
 }
