@@ -98,6 +98,9 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\RelayCommandWithParameters.cs" />
     <Compile Include="Converters\UIntMinutesFormattingConverter.cs" />
+    <Compile Include="Dialogs\ReviewDialog.xaml.cs">
+      <DependentUpon>ReviewDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Enums\ShortcutType.cs" />
     <Compile Include="Events\FileIOEvent.cs" />
     <Compile Include="Events\FormEvent.cs" />
@@ -108,11 +111,10 @@
     <Compile Include="Helpers\FileIOHelper.cs" />
     <Compile Include="Helpers\FileLaunchHelper.cs" />
     <Compile Include="Helpers\FrameAnimationHelper.cs" />
-    <Compile Include="Helpers\SettingsHelper.cs" />
+    <Compile Include="Helpers\ReviewHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileIOService.cs" />
     <Compile Include="Services\FileLaunchService.cs" />
-    <Compile Include="Services\NavService.cs" />
     <Compile Include="Services\WordCounterService.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
@@ -154,14 +156,8 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FlowFrame.colinkiama">
-      <Version>0.0.0.1</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.7</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
-      <Version>4.0.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
       <Version>4.0.0</Version>
@@ -177,6 +173,10 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Dialogs\ReviewDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

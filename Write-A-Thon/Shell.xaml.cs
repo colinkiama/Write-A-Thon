@@ -17,6 +17,8 @@ using Write_A_Thon.View;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using System.Threading.Tasks;
 using Write_A_Thon.Services;
+using Write_A_Thon.Dialogs;
+using Windows.System;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Write_A_Thon
@@ -32,6 +34,8 @@ namespace Write_A_Thon
         const string saveString = "Save";
         const string saveAsString = "Save As...";
         const string loadFileString = "Load File";
+        const string reviewString = "Rate/Review App";
+        const string feedbackString = "Send Feedback";
 
         public static FileIOService fileIOService = new FileIOService();
         public Shell()
@@ -129,6 +133,20 @@ namespace Write_A_Thon
                     break;
                 case loadFileString:
                     App.fileIOService.RequestToLoadFile();
+                    break;
+            }
+        }
+
+        private async void LowMenuListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string clickedContent = (string)e.ClickedItem;
+            switch (clickedContent)
+            {
+                case reviewString:
+                    await new ReviewDialog().ShowAsync();
+                    break;
+                case feedbackString:
+                    await Launcher.LaunchUriAsync(new Uri("mailto:colinkiama@hotmail.co.uk"));
                     break;
             }
         }

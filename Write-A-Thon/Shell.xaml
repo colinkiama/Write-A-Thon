@@ -55,7 +55,9 @@
 
             </ListView>
             <ListView VerticalAlignment="Bottom" IsItemClickEnabled="True"
-                      SelectionMode="None">
+                      SelectionMode="None"
+                      Name="LowMenuListView"
+                      ItemClick="LowMenuListView_ItemClick">
                 <ListViewItem Content="Rate/Review App"/>
                 <ListViewItem Content="Send Feedback"/>
             </ListView>
