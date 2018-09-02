@@ -15,7 +15,7 @@
             <RowDefinition Height="32"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Text Editor UWP"
+        <TextBlock Text="Text Editor"
                    FontSize="12"
                    Padding="12,9"
                    Canvas.ZIndex="20"

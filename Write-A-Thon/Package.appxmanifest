@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="b55c73c8-0bb0-45a4-b9d2-f0105da52a2a" Publisher="CN=colinkiama" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="b55c73c8-0bb0-45a4-b9d2-f0105da52a2a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="64942ColinKiama.TextEditor-WriteBeautifully" Publisher="CN=D2DBA6D7-296F-484A-BABE-2B76C9C2AF78" Version="1.2.0.0" />
+  <mp:PhoneIdentity PhoneProductId="bd6e6902-47cb-4150-8cdc-1b3c98dd6caa" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Write-A-Thon</DisplayName>
-    <PublisherDisplayName>colinkiama</PublisherDisplayName>
+    <DisplayName>Text Editor - Write Beautifully</DisplayName>
+    <PublisherDisplayName>Colin Kiama</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Write_A_Thon.App">
-      <uap:VisualElements DisplayName="Text Editor UWP" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Write-A-Thon" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Text Editor" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Write-A-Thon" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
