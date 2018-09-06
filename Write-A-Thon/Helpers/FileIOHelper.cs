@@ -76,6 +76,11 @@ namespace Write_A_Thon.Helpers
         {
             bool isFileSaved = false;
             StorageFile saveFile = await CreateSaveFileFromPicker();
+            string dataToSave = fileContent;
+            if (saveFile.FileType == ".txt")
+            {
+                dataToSave = RtfToPlainTextHelper.ConvertRtfToPlainText(dataToSave);
+            }
             try
             {
                 var stream = await saveFile.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite);
@@ -83,7 +88,7 @@ namespace Write_A_Thon.Helpers
                 {
                     using (var dataWriter = new Windows.Storage.Streams.DataWriter(outputStream))
                     {
-                        dataWriter.WriteString(fileContent);
+                        dataWriter.WriteString(dataToSave);
                         await dataWriter.StoreAsync();
                         await outputStream.FlushAsync();
                         Debug.WriteLine("File Saved");
@@ -110,6 +115,11 @@ namespace Write_A_Thon.Helpers
         public async Task<bool> SaveFileAsync(string fileContent, StorageFile fileToSave, bool willChangeToNewFile = false)
         {
             bool isFileSaved = false;
+            string dataToSave = fileContent;
+            if (fileToSave.FileType == ".txt")
+            {
+                dataToSave = RtfToPlainTextHelper.ConvertRtfToPlainText(dataToSave);
+            }
             try
             {
                 var stream = await fileToSave.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite);
@@ -117,7 +127,7 @@ namespace Write_A_Thon.Helpers
                 {
                     using (var dataWriter = new Windows.Storage.Streams.DataWriter(outputStream))
                     {
-                        dataWriter.WriteString(fileContent);
+                        dataWriter.WriteString(dataToSave);
                         await dataWriter.StoreAsync();
                         await outputStream.FlushAsync();
                         Debug.WriteLine("File Saved");
@@ -147,7 +157,7 @@ namespace Write_A_Thon.Helpers
             };
             // Dropdown of file types the user can save the file as
             savePicker.FileTypeChoices.Add("Rich Text Format", new List<string>(){ ".rtf"});
-            //savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt"});
+            savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "Untitled";
 

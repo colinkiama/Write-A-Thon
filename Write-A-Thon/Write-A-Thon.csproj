@@ -119,6 +119,7 @@
     <Compile Include="Helpers\FileLaunchHelper.cs" />
     <Compile Include="Helpers\FrameAnimationHelper.cs" />
     <Compile Include="Helpers\ReviewHelper.cs" />
+    <Compile Include="Helpers\RtfToPlainTextHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileIOService.cs" />
     <Compile Include="Services\FileLaunchService.cs" />
