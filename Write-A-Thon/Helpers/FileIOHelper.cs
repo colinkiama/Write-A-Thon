@@ -164,7 +164,7 @@ namespace Write_A_Thon.Helpers
             };
             // Dropdown of file types the user can save the file as
             savePicker.FileTypeChoices.Add("Rich Text Format", new List<string>() { ".rtf" });
-            savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
+            savePicker.FileTypeChoices.Add("Plain Text (Lose Formatting)", new List<string>() { ".txt" });
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "Untitled";
 
