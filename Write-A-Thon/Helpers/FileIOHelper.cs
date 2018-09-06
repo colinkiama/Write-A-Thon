@@ -63,7 +63,7 @@ namespace Write_A_Thon.Helpers
                 SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary
             };
             picker.FileTypeFilter.Add(".rtf");
-            //picker.FileTypeFilter.Add(".txt");
+            picker.FileTypeFilter.Add(".txt");
 
             Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
             fileFromLastOperation = file;
@@ -77,9 +77,13 @@ namespace Write_A_Thon.Helpers
             bool isFileSaved = false;
             StorageFile saveFile = await CreateSaveFileFromPicker();
             string dataToSave = fileContent;
-            if (saveFile.FileType == ".txt")
+
+            if (saveFile != null)
             {
-                dataToSave = RtfToPlainTextHelper.ConvertRtfToPlainText(dataToSave);
+                if (saveFile.FileType == ".txt")
+                {
+                    dataToSave = RtfToPlainTextHelper.ConvertRtfToPlainText(dataToSave);
+                }
             }
             try
             {
@@ -116,9 +120,12 @@ namespace Write_A_Thon.Helpers
         {
             bool isFileSaved = false;
             string dataToSave = fileContent;
-            if (fileToSave.FileType == ".txt")
+            if (fileToSave != null)
             {
-                dataToSave = RtfToPlainTextHelper.ConvertRtfToPlainText(dataToSave);
+                if (fileToSave.FileType == ".txt")
+                {
+                    dataToSave = RtfToPlainTextHelper.ConvertRtfToPlainText(dataToSave);
+                } 
             }
             try
             {
@@ -156,7 +163,7 @@ namespace Write_A_Thon.Helpers
                 Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary
             };
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("Rich Text Format", new List<string>(){ ".rtf"});
+            savePicker.FileTypeChoices.Add("Rich Text Format", new List<string>() { ".rtf" });
             savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "Untitled";
