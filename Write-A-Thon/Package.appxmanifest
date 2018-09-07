@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+ IgnorableNamespaces="uap mp uap3">
   <Identity Name="64942ColinKiama.TextEditor-WriteBeautifully" Publisher="CN=D2DBA6D7-296F-484A-BABE-2B76C9C2AF78" Version="1.3.1.0" />
   <mp:PhoneIdentity PhoneProductId="bd6e6902-47cb-4150-8cdc-1b3c98dd6caa" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
@@ -20,6 +21,13 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <Extensions>
+        <uap3:Extension Category="windows.appExtensionHost">
+          <uap3:AppExtensionHost>
+            <uap3:Name>colinkiama.com.TextEditorExt</uap3:Name>
+          </uap3:AppExtensionHost>
+        </uap3:Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>
